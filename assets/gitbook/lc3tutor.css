@@ -1,0 +1,5 @@
+.ctnr_btn_start {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+}
