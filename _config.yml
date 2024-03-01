@@ -8,6 +8,26 @@ description: >
   A convinient place to put information about me.
   An online resume.
 
+page_navi:
+   - link:  '/1-1/'
+     title: '1.1. The PennSim GUI'
+   - link:  '/1-2/'
+     title: '1.2. Basic Commands'
+   - link:  '/1-3/'
+     title: '1.3. Run a Program'
+   - link:  '/1-4/'
+     title: '1.4. Script Command'
+   - link:  '/1-5/'
+     title: '1.5. *Using Breakpoints'
+   - link:  '/2-1/'
+     title: '2.1. Number Bases'
+   - link:  '/a-1/'
+     title: 'A.1. Value to Binary String'
+   - link:  '/b-1/'
+     title: 'B.1. LC3 Image Generator'
+   - link:  '/b-2/'
+     title: 'B.2. 2sC Base Conversion'
+
 version:          1.0
 
 url:              'https://lc3tutor.github.io'
