@@ -12,6 +12,7 @@ version:          1.0
 
 url:              'https://lc3tutor.github.io'
 #baseurl:          '/'
+imageurl:         '/assets/lc3tutor/images/'
 
 # bootstrap: use the remote theme for the site itself
 remote_theme: sighingnow/jekyll-gitbook
