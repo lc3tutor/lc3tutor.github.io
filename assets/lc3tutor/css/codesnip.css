@@ -1,0 +1,50 @@
+.gistTab {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	font: 0.8rem Courier New;
+}
+th, td {
+	border-collapse: collapse;
+	white-space: pre;
+}
+.line-num {
+	background-color: #faf5f5;
+}
+.gistwrapper {
+	max-width: 525px;
+	max-height: 300px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.gist-content {
+	width: 100%;
+	max-height: 300px;
+	overflow: auto;
+}	
+.opcode {
+	color: blue;
+	font-weight: bold;
+}
+.directive {
+	color: black;
+	font-weight: bold;
+}
+.oscall {
+	color: red;
+	font-weight: bold;
+}
+.register {
+	color: #800000;
+	font-weight: bold;
+}
+.number {
+	color: orange;
+}
+.comment {
+	color: #006600;
+}
+.string {
+	color: gray;
+}

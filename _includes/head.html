@@ -40,6 +40,11 @@
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{site.baseurl}}/assets/gitbook/images/apple-touch-icon-precomposed-152.png">
 <link rel="shortcut icon" href="{{site.baseurl}}/{{site.favicon_path}}" type="image/x-icon">
 
+<!-- CSS to style lc3 code snips. -->
+<link rel="stylesheet" href="{{site.cssurl}}codesnip.css">
+<!-- Javascript to render lc3 code snips. -->
+<script src="{{site.jsurl}}codesnip.js"></script>
+
 {% if site.extra_css %}
     {%- for extra_css in site.extra_css -%}
         {%- assign starts_with = extra_css | slice: 0,4 -%}
