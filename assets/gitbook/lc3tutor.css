@@ -10,3 +10,21 @@
   margin-right: auto;
   max-width: 725px;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+
+/*
+ * Table related CSS.
+ *
+ */
+tr:nth-child(even) {
+	background-color: #c3c6c9;
+}
+
+.td-c {
+	text-align: center;
+}
+
+.th-c {
+	text-align: center;
+}
