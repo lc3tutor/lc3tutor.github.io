@@ -35,7 +35,7 @@ function getGist(gistID) {
 //function onLoad(event) {
 function onLoadGist(gistID){
 	//gL = document.getElementsByClassName("gistTab");
-	gL.push({"id" : gistID});
+	gL.push({"id" : gistID, "fn" : gistID.split("/").pop()});
 	//console.log(gL);
 	// Start first gist get.
 	getGist(gistID);
@@ -211,7 +211,7 @@ function popTab(c, rfn) {
 	console.log(rfn);
 	for (var gist of gL){
 		console.log(gist.id);
-		if (gist.id.includes(rfn)){
+		if (gist.fn === rfn){
 			var table = document.getElementById(gist.id);
 			console.log(table);
 			flag = true;

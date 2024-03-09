@@ -12,6 +12,7 @@ th, td {
 	background-color: #faf5f5;
 }
 .gistwrapper {
+	margin: auto;
 	max-width: 525px;
 	max-height: 300px;
 	border: 1px solid #000000;
