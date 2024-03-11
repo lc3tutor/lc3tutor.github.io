@@ -1,6 +1,6 @@
 <div>
 	<h1>
-        Base Conversion
+        16-bit 2sC Base Conversion
     </h1>
 	
 	<table>
@@ -32,11 +32,11 @@
 	</table>
 	
 	<br>
-	<label id="lbl_status" class="status_lbl">... status ...</label>
+	<label id="convStatus" class="status_lbl">... status ...</label>
 	<br>
 
 	<h1>
-        Binary Arithmetic
+        16-bit 2sC Binary Arithmetic
     </h1>
 	
 	<table>
@@ -56,15 +56,16 @@
 	  </tr>
 	  <tr></tr>
 	  <tr>
-	    <td colspan="5" style="text-align: center"><button type="button" onclick="btnCalculate()">Calculate</button></td>
+	    <td colspan="5" style="text-align: center"><button id="calcBtn" type="button">Calculate</button></td>
 	  </tr>
 	</table>
 	
 	<br>
-	<label id="lbl_calc_status" class="status_lbl">... status ...</label>
+	<label id="calcStatus" class="status_lbl">... status ...</label>
 	<br>
 	<br>
 	
 	<label>Binary Arithmetic:</label><br>
 	<div id="txtboxResult" class="txtboxMath"></div>
+	<script>callBaseConv();</script>
 </div>

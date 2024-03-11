@@ -1,421 +1,285 @@
-
 /*
- * Need to clean up and organize javascript code.
+ * It is assumed that the fields already exist in html.
  *
  */
 
-window.addEventListener('load', onLoad);
+//window.addEventListener('load', onLoad);
 
-
-// Get the input field
-var in_dec = document.getElementById("inDecimal");
-var in_bin = document.getElementById("inBinary");
-var in_hex = document.getElementById("inHex");
-var out_dec = document.getElementById("outDecimal");
-var out_bin = document.getElementById("outBinary");
-var out_hex = document.getElementById("outHex");
-
-var status_val = document.getElementById("lbl_status");
-var result_status_val = document.getElementById("lbl_calc_status");
-
-var sel_val = document.getElementById("selPlusMinus");
-
-var in_op1 = document.getElementById("inOp1");
-var in_op2 = document.getElementById("inOp2");
-var out_result = document.getElementById("outResult");
-
-var txtbox_result = document.getElementById("txtboxResult");
-
-const input_type = {
-	binary: 0,
-	decimal: 1,
-	hex: 3,
-	unknown : 4
+// Ideally the javascript could be loaded with the post at the end.
+// Once I determine a way to best load the javascript we will use:
+// const objBaseConv = new baseConv();
+var objBaseConv = null;
+var objCalc2sc = null;
+function callBaseConv() {
+	objBaseConv = new baseConv();
+	objCalc2sc = new calc2sc();
 }
+class baseConv {
+	constructor() {
+		this.bases = {dec:0, bin:1, hex:2} // Type identifier.
+		// Get the input/output field.
+		this.idList = ["inDecimal", "inBinary", "inHex", "convStatus"];
+		this.dftV = ["0", "0000000000000000", "0000"];
+		this.idObj = {};
+		for (const id of this.idList) {
+			this.idObj[id] = document.getElementById(id);
+		}
 
-// Handle input from binary input html element.
-in_bin.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    parse_input(input_type.binary, in_bin.value);
-  }
-});
-
-// Handle input from decimal input html element.
-in_dec.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    parse_input(input_type.decimal, in_dec.value);
-  }
-});
-
-// Handle input from hexadecimal input html element.
-in_hex.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    parse_input(input_type.hex, in_hex.value);
-  }
-});
-
-// Global Variables
-
-
-		
-/*
- * When page loads.
- *
- */
-function onLoad(event) {
-	reset_input();
-}
-
-function reset_input() {
-	in_dec.value = "0";
-	in_bin.value = "0000000000000000";
-	in_hex.value = "0000";	
-	
-	in_op1.value = "0000000000000000";
-	in_op2.value = "0000000000000000";
-	out_result.value = "0000000000000000";
-}
-
-// 2sC hexadecimal characters (1 msb): 8 - F.
-function parse_input(click_src, input_str) {
-	
-	switch(click_src){
-		case input_type.binary:
-			if(handle_binary_input(input_str) == false){
-				return;
-			}
-		  break;
-		case input_type.decimal:
-		  if(handle_decimal_input(input_str) == false){
-			  return;
-		  }
-		  break;
-		case input_type.hex:
-			if(handle_hexadecimal_input(input_str) == false){
-				return;
-			}
-		  break;
-		default:
-	}	
-		
-	status_val.innerHTML = "Successful conversion!";
-}
-
-function check_valid_input(click_src, input_str) {
-	let flg_valid = true;
-	let val = 0;
-	
-	switch(click_src){
-		case input_type.binary:
-		  if(input_str.length != 16){
-			  status_val.innerHTML = "Invalid binary input.";
-			  flg_valid = false;
-			  break;
-		  }
-		  for(i=0; i<input_str.length; i++) {
-			if((input_str[i] != '1') && (input_str[i] != '0' )){
-			  status_val.innerHTML = "Invalid binary input.";
-			  flg_valid = false;
-			  break;
-			}
-		  }
-		  break;
-		case input_type.decimal:
-		  break;
-		case input_type.hex:
-		  if(input_str.length != 4) {
-			  status_val.innerHTML = "Invalid hexadecimal input.";
-			  flg_valid = false;
-		  }
-		  for(i=0; i<input_str.length; i++) {
-			if((input_str[i] < '0') || (input_str[i] > 'f' ) ||
-			   (input_str[i] > '9') && (input_str[i] < 'A' ) ||
-			   (input_str[i] > 'F') && (input_str[i] < 'a' )){
-			  status_val.innerHTML = "Invalid hexadecimal input.";
-			  flg_valid = false;
-			  break;
-			}
-		  }
-		  break;
-		default:
-	}
-	
-	return flg_valid;
-}
-
-function convert_to_value(click_src, input_str) {
-	let flg_neg = false;
-	let val = 0;
-	
-	// Parse the input according to which input caused the event.
-	switch(click_src){
-		case input_type.binary:
-		  if(input_str[0] == '1'){
-			  flg_neg = true;
-		  }
-		  val = parseInt(input_str, 2);
-		  break;
-		case input_type.decimal:
-		  val = parseInt(input_str, 10);
-		  if(val < 0){
-			  flg_neg = true;
-			  val = -1 * val;
-		  }
-		  break;
-		case input_type.hex:
-		  if(input_str[0] > '7')
-		  val = parseInt(input_str, 16);
-		  break;
-		default:
-	}
-	
-	return {
-		value : val,
-		neg : flg_neg,
-	}
-}
-
-function handle_decimal_input(input_str){
-	
-	let val = parseInt(input_str, 10);
-	
-	if(val < -32768 || val > 32767){
-		status_val.innerHTML = "Invalid decimal input.";
-		return false;
-	}
-	
-	out_dec.innerHTML = input_str;
-	
-	if(val < 0){
-		
-		val = -1 * val;
-		
-		val = ~val;
-		val = val + 1;
-		val = val & 0xFFFF;
-	}
-	
-	update_binary_input(val);
-	update_hexadecimal_input(val);
-	
-	return true;
-}
-
-function handle_binary_input(input_str){
-	
-	if(input_str.length != 16){
-		  status_val.innerHTML = "Invalid binary input.";
-		  return false;
-	  }
-	  for(i=0; i<input_str.length; i++) {
-		if((input_str[i] != '1') && (input_str[i] != '0' )){
-		  status_val.innerHTML = "Invalid binary input.";
-		  return false;
+		// First three elements are the inputs.
+		for (let i = 0; i < 3; i++) {
+			let id = this.idList[i];
+			this.idObj[id].value = this.dftV[i];
+			this.idObj[id].addEventListener("keyup", this.pIn.bind(this));
 		}
 	}
-	
-	out_bin.innerHTML = input_str;
-	
-	let val = parseInt(input_str, 2);
-	update_hexadecimal_input(val);
-	
-	if(input_str[0] == '1'){
-		val = ~val;
-		val = val + 1;
-		val = val & 0xFFFF;
-		val = -1 * val;
-	}
-	out_dec.innerHTML = val.toString(10);
-	
-	return true;
-}
-
-function handle_hexadecimal_input(input_str) {
-	
-	if(input_str.length != 4) {
-		status_val.innerHTML = "Invalid hexadecimal input.";
-		return false;
-	}
-	for(i=0; i<input_str.length; i++) {
-		if((input_str[i] < '0') || (input_str[i] > 'f' ) ||
-		   (input_str[i] > '9') && (input_str[i] < 'A' ) ||
-		   (input_str[i] > 'F') && (input_str[i] < 'a' )){
-			status_val.innerHTML = "Invalid hexadecimal input.";
-			return false;
+	// The event object tells us who sent the keystroke.
+	pIn(e) {
+		// The order is always decimal, binary, hex.
+		let id = e.target.id;
+		let val = e.target.value;
+		
+		let valid = false;
+		switch(this.idList.indexOf(id)){
+			case this.bases.dec:
+				valid = this.hDec(val);
+			  	break;
+			case this.bases.bin:
+				valid = this.hBin(val);
+				break;
+			case this.bases.hex:
+				valid = this.hHex(val);
+				break;
+			default:
+		}	
+		
+		if(valid){
+			this.idObj[this.idList[3]].innerHTML = "Successful conversion!"
+			this.idObj[id].style.color = "black";
 		}
-	}
-	
-	out_hex.innerHTML = input_str;
-	
-	let val = parseInt(input_str, 16);
-	update_binary_input(val);
-	
-	if(input_str[0] > '7'){
-		val = ~val;
-		val = val + 1;
-		val = val & 0xFFFF;
-		val = -1 * val;
-	}
-	out_dec.innerHTML = val.toString(10);
-	
-	return true;
-}
-
-function update_binary_input(val){
-
-	let val_str = val.toString(2);
-	let msb_char = '0';
-
-	counter = 16-val_str.length;
-	if(val_str.length < 16){
-		for (i=0; i < counter; i++){
-			val_str = msb_char + val_str;
+		else{
+			this.idObj[id].style.color = "red";
 		}
-	}
-	out_bin.innerHTML = val_str;
-}
-
-function update_hexadecimal_input(val){
-
-	let val_str = val.toString(16);
-	let msb_char = '0';
-
-	counter = 4-val_str.length;
-	if(val_str.length < 4){
-		for (i=0; i < counter; i++){
-			val_str = msb_char + val_str;
-		}
-	}
-	out_hex.innerHTML = val_str;
-}
-
-function btnCalculate(){
-	let op1_str = in_op1.value;
-	let op2_str = in_op2.value;
-	
-	if(op1_str.length != 16){
-		result_status_val.innerHTML = "Invalid operand 1, not 16 bits.";
 		return;
 	}
-	if(op2_str.length != 16){
-		result_status_val.innerHTML = "Invalid operand 2, not 16 bits.";
+	hDec(input){
+		let valid = false;
+		let val = parseInt(input, 10);
+		let cond1 = isNaN(val); // Is a number.
+		let cond2 = ((val < -32768) || (val > 32767));
+		
+		if(cond1 || cond2){
+			this.idObj[this.idList[3]].innerHTML = "Invalid decimal input.";
+		}
+		else{
+			valid = true;
+			this.uBin(val);
+			this.uHex(val);
+		}
+		return valid;
+	}
+	hBin(input){
+		let valid = false;
+		let val = parseInt(input, 2);
+		let cond1 = isNaN(val);
+		let cond2 = input.length != 16;
+		let cond3 = false;
+		for(let i = 0; i < input.length; i++){
+			if((input[i] != '1') && (input[i] != '0')){
+				cond3 = true;
+			}
+		}
+
+		if(cond1 || cond2 || cond3){
+			this.idObj[this.idList[3]].innerHTML = "Invalid binary input.";
+		}
+		else{
+			valid = true;
+			this.uHex(val);
+			this.uDec(this.bases.bin, input[0], val);
+		}
+		return valid;
+	}
+	hHex(input){
+		let valid = false;
+		let val = parseInt(input, 16);
+		let cond1 = isNaN(val);
+		let cond2 = input.length != 4;
+		let cond3 = false;
+		for(let i = 0; i < input.length; i++){
+			if((input[i] < '0') || (input[i] > 'f' ) ||
+			   (input[i] > '9') && (input[i] < 'A' ) ||
+			   (input[i] > 'F') && (input[i] < 'a' )){
+					cond3 = true;
+			}
+		}
+
+		if(cond1 || cond2 || cond3){
+			this.idObj[this.idList[3]].innerHTML = "Invalid hexadecimal input.";
+		}
+		else{
+			valid = true;
+			this.uBin(val);
+			this.uDec(this.bases.hex, input[0], val);
+		}
+		return valid;
+	}
+	uDec(b, ms, v){
+		let cond1 = (b == this.bases.bin) && (ms == '1');
+		let cond2 = (b == this.bases.hex) && (ms >  '7');
+		if(cond1 || cond2){
+			v = ((~v + 1) & 0xFFFF) * -1;
+		}
+		this.idObj[this.idList[0]].value = v.toString(10);
 		return;
 	}
-	for(i=0; i<op1_str.length; i++) {
-		if((op1_str[i] != '1') && (op1_str[i] != '0' )){
-			result_status_val.innerHTML = "Invalid operand 1, only 1 and 0 allowed.";
-			return;
-		}
-	}
-	for(i=0; i<op2_str.length; i++) {
-		if((op2_str[i] != '1') && (op2_str[i] != '0' )){
-			result_status_val.innerHTML = "Invalid operand 2, only 1 and 0 allowed.";
-			return;
-		}
-	}
-	
-	val1 = parseInt(op1_str, 2);
-	val2 = parseInt(op2_str, 2);
-	
-	if(op1_str[0] == '1'){
-		val1 = ~val1;
-		val1 = val1 + 1;
-		val1 = val1 & 0xFFFF;
-		val1 = -1 * val1;
-	}
-	if(op2_str[0] == '1'){
-		val2 = ~val2;
-		val2 = val2 + 1;
-		val2 = val2 & 0xFFFF;
-		val2 = -1 * val2;
-	}
-	
-	if(sel_val.value == "minus"){
-		val3 = val1 - val2;
-	}
-	else {
-		val3 = val1 + val2;
-	}
-	
-	if(val3 < 0){
-		val3 = -1 * val3;
-		val3 = ~val3;
-		val3 = val3 + 1;
-		val3 = val3 & 0xFFFF;
-	}
-	
-	let val_str = val3.toString(2);
-	let msb_char = '0';
+	uBin(v){
+		if(v < 0){
+			v = (~(-1 * v) + 1) & 0xFFFF;
+		}		
+		let vStr = v.toString(2);
+		let msb = '0'; // I think '1' is taken care of.
 
-	let counter = 16-val_str.length;
-	if(val_str.length < 16){
-		for (i=0; i < counter; i++){
-			val_str = msb_char + val_str;
+		let c = 16 - vStr.length;
+		for (let i = 0; i < c; i++){
+			vStr = msb + vStr;
 		}
+		this.idObj[this.idList[1]].value = vStr;
+		return;
 	}
-	
-	out_result.value = val_str;
-	
-	result_status_val.innerHTML = "Successful calculation!";
-	//console.log(sel_val.value);
-	
-	update_math_txtbox(op1_str, op2_str, val_str, sel_val.value);
+	uHex(v){
+		if(v < 0){
+			v = (~(-1 * v) + 1) & 0xFFFF;
+		}		
+		let vStr = v.toString(16);
+		let msn = '0'; // 'F' is taken care off.
+
+		let c = 4 - vStr.length;
+		for (let i = 0; i < c; i++){
+			vStr = msn + vStr;
+		}
+		this.idObj[this.idList[2]].value = vStr.toUpperCase();
+	}
 }
 
-function update_math_txtbox(op1_str, op2_str, result_str, sel_str) {
-	
-	// Cin initial is '0'. Cout is based on Cin, op1, op2. There is space before last carry out.
-	// Cin,op1,op2 --> integer. If sum is > 1, Cin is '1' otherwise '0'.
-	// 000 - 0
-	// 001 - 0
-	// 011 - 1
-	// 111 - 1
-	txtbox_result.innerHTML = "   Hello\n\tWorld !";
-	
-	let Cin = '0';
-	let carry_str = "";
-	
-	if(sel_val.value == "minus"){
-		op = "-";
-	} else {
-		op = "+";
+class calc2sc {
+	constructor() {
+		this.idList = ["inOp1", "inOp2", "outResult", "txtboxResult", "calcStatus", "selPlusMinus"];
+		this.dftV = "0000000000000000";
+		this.idObj = {};
+		for (const id of this.idList) {
+			this.idObj[id] = document.getElementById(id);
+		}
+
+		for (let i = 0; i < 3; i++) {
+			this.idObj[this.idList[i]].value = this.dftV;
+		}
+		document.getElementById("calcBtn")
+			.addEventListener("click", this.calc.bind(this));
 	}
-	
-	for(i=15; i>0; i--){
-		if(parseInt(Cin, 10) + parseInt(op1_str[i], 10) + parseInt(op2_str[i], 10) > 1){
+	calc (){
+		let valid = true;
+		let status = this.idObj[this.idList[4]];
+		let ivS = "Invalid operand x, check if 16b and only 1 or 0."
+		let op1 = this.idObj[this.idList[0]].value;
+		let op2 = this.idObj[this.idList[1]].value;
+		let selV = this.idObj[this.idList[5]].value;
+
+		let cond = op1.length != 16;
+		for(let b of op1){
+			if((b != '1') && (b != '0')){
+				cond = true;
+			}
+		}
+		if(cond){
+			valid = false;
+			status.innerHTML = ivS.replace("x", "1");
+		}
+
+		cond = op2.length != 16;
+		for(let b of op2){
+			if((b != '1') && (b != '0')){
+				cond = true;
+			}
+		}
+		if(cond){
+			valid = false;
+			status.innerHTML = ivS.replace("x", "2");
+		}
+
+		if(valid){
+			let v1 = parseInt(op1, 2);
+			let v2 = parseInt(op2, 2);
+			if(op1[0] == '1'){
+				v1 = ((~v1 + 1) & 0xFFFF) * -1;
+			}
+			if(op2[0] == '1'){
+				v2 = ((~v2 + 1) & 0xFFFF) * -1;
+			}
+			
+			let v3 = 0;
+			if(selV == "minus"){
+				v3 = v1 - v2;
+			}
+			else {
+				v3 = v1 + v2;
+			}
+			
+			if(v3 < 0){
+				v3 = (~(-1 * v3) + 1) & 0xFFFF;
+			}
+			
+			let vStr = v3.toString(2);
+		
+			let c = 16 - vStr.length;
+			for (let i = 0; i < c; i++){
+				vStr = '0' + vStr;
+			}
+			
+			this.idObj[this.idList[2]].value = vStr;
+			
+			status.innerHTML = "Successful calculation! Check output below.";
+			this.uTxtBox(op1, op2, vStr, selV);
+		}
+		return;
+	}
+	uTxtBox(o1, o2, vS, sel) {
+		// Cin initial is '0'. Cout is based on Cin, op1, op2. There is space before last carry out.
+		// Cin,op1,op2 --> integer. If sum is > 1, Cin is '1' otherwise '0'.
+		// 000 - 0
+		// 001 - 0
+		// 011 - 1
+		// 111 - 1
+		let Cin = '0';
+		let cS = "";
+		
+		let op = "";
+		if(sel == "minus"){
+			op = "-";
+		}
+		else{
+			op = "+";
+		}
+		
+		for(let i = 15; i > 0; i--){
+			if(parseInt(Cin, 10) + parseInt(o1[i], 10) + parseInt(o2[i], 10) > 1){
+				Cin = '1';
+			} else {
+				Cin = '0';
+			}
+			cS = Cin + cS;
+		}
+		cS = " " + cS;
+		if(parseInt(Cin, 10) + parseInt(o1[0], 10) + parseInt(o2[0], 10) > 1){
 			Cin = '1';
 		} else {
 			Cin = '0';
 		}
-		carry_str = Cin + carry_str;
+		// This is not formatted correctly?
+		cS = "\n " + Cin + cS + "\n";
+		cS += "  " + " <b>" + o1 + "</b>\n";
+		cS += " " + op + " <b>" + o2 + "</b>\n";
+		cS += "--------------------\n";
+		cS += " " + Cin + " <b>" + vS + "</b>";
+		this.idObj[this.idList[3]].innerHTML = cS;
 	}
-	carry_str = " " + carry_str;
-	if(parseInt(Cin, 10) + parseInt(op1_str[i], 10) + parseInt(op2_str[i], 10) > 1){
-		Cin = '1';
-	} else {
-		Cin = '0';
-	}
-	
-	
-	// This is not formatted correctly.
-	
-	carry_str = "\n " + Cin + carry_str + "\n";
-	carry_str += "  " + " <b>" + op1_str + "</b>\n";
-	carry_str += " " + op + " <b>" + op2_str + "</b>\n";
-	carry_str += "--------------------\n";
-	carry_str += " " + Cin + " <b>" + result_str + "</b>";
-	//txtbox_result.innerHTML = " " + carry_str + "\n" + "   <b>" + op1_str + "</b>\n" + "--------------------\n" + " " + Cin + " " + op2_str;
-	txtbox_result.innerHTML = carry_str;
 }
