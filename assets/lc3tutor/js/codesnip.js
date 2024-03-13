@@ -208,12 +208,12 @@ function hasNumber(kw) {
 function popTab(c, rfn) {
 	// Get element by gist ID.
 	var flag = false;
-	console.log(rfn);
+	//console.log(rfn);
 	for (var gist of gL){
-		console.log(gist.id);
+		//console.log(gist.id);
 		if (gist.fn === rfn){
 			var table = document.getElementById(gist.id);
-			console.log(table);
+			//console.log(table);
 			flag = true;
 		}
 	}

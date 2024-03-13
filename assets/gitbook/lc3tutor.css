@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+
 .ctnr_btn_start {
   display: flex;
   justify-content: center; /* center horizontally */
@@ -10,8 +12,6 @@
   margin-right: auto;
   max-width: 725px;
 }
-
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 
 /*
  * Table related CSS.

@@ -1,10 +1,3 @@
-/*
- * It is assumed that the fields already exist in html.
- *
- */
-
-//window.addEventListener('load', onLoad);
-
 // Ideally the javascript could be loaded with the post at the end.
 // Once I determine a way to best load the javascript we will use:
 // const objBaseConv = new baseConv();
