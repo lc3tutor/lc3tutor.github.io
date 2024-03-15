@@ -8,6 +8,8 @@ description: >
   A convinient place to put information about me.
   An online resume.
 
+google_analytics: G-R10TKMEFBS
+
 page_navi:
    - link:  '/1-1/'
      title: '1.1. The PennSim GUI'
