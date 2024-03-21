@@ -1,7 +1,7 @@
 
-var lc3IG = null;
-function callLC3ImageGenerator() {
-	lc3IG = new LC3ImageGenerator()
+var ig3Obj = null;
+function callIg3Obj() {
+	ig3Obj = new LC3IG()
 }
 
 class pixel {
@@ -18,8 +18,18 @@ class pixel {
 		this.ctx.fillStyle = c;
 		this.ctx.fillRect(this.x, this.y, this.w, this.w);
 	}
-	getRGB555() {
-
+	gR5(ign='#000000') {
+		// rgb888
+        let r8 = parseInt(this.c.slice(1),16);
+		// rgb555
+		let r5 = ((r8 & 0xf80000) >> 8) |
+		         ((r8 & 0xf800) >> 6) |
+				 ((r8 & 0xf8) >> 3);
+		r5 = r5 & 0x007FFF;
+		if(this.c != ign){
+			r5 = r5 | 0x008000;
+		}
+		return r5.toString(16);
 	}
 }
 
@@ -83,7 +93,7 @@ class LC3Image {
 	}
 }
 
-class LC3ImageGenerator {
+class LC3IG {
 	constructor () {
 		this.canvas = document.getElementById("pixelCanvas");
 		this.image = new LC3Image(this.canvas);
@@ -107,6 +117,11 @@ class LC3ImageGenerator {
 				that.GenCode();
 			}
 		);
+		document.getElementById("btnCopyCode")
+			.addEventListener("click", function(ev){	
+				that.CopyCode();
+			}
+		);
 		this.canvas.addEventListener("mousedown", function(ev) {
 			let [x, y, c] = that.getMousePos(ev);
 			that.image.DrawPixel(x, y, c);
@@ -123,43 +138,39 @@ class LC3ImageGenerator {
 		return [x, y, selColor];
 	}
 	GenCode() {
-		let ignColor = document.getElementById('ignColor').value;
-		// Explore using string interpolation.
-		// Add prefix option.
-		// Add origin option.
-		// Add code size: pixels.length + 1 for origin
-		// Add encoding for image????? Width, height, rowoffset?
-		let codeStr = "<br>; LC-3 Image Generator<br><br>";
-	
-		codeStr = codeStr + "; Change to desired start location.<br>";
-		codeStr = codeStr + ".ORIG x5000<br><br>";
+		let px = this.image.pixels;
+		let ign = document.getElementById('ignColor').value;
+		let prefix = document.getElementById("ig3Prefix").value;
+		let orig = document.getElementById("ig3Orig").value;
+		let size = 3 + this.image.w*this.image.h - 1;
+		let end = (parseInt(orig, 16) + size).toString(16);
+		// Code String
+		let cs = `; LC3 Image Generator\n\n` +
+		         `; Using ${prefix} prefix to ensure unique labels.\n` +
+				 `; Image is ${size} words and uses memory x${orig} to x${end}.\n` +
+				 `.ORIG x${orig}\n\n` +
+				 `${prefix}Width  .FILL #${this.image.w}\n` +
+				 `${prefix}Height .FILL #${this.image.h}\n` +
+				 `${prefix}Offset .FILL #${128-this.image.w}\n\n`
 		
-		codeStr = codeStr + "; Width = " + this.image.w + ", Height = " + this.image.h + "<br><br>";
-		
-		codeStr = codeStr + "; Using lc3ig prefix to ensure unique labels.<br>";
-		
-		for(let i = 0; i < this.image.pixels.length; i++){
-			
+		for(let i = 0; i < px.length; i++){
 			let rowStr = (parseInt(i/this.image.w)).toString();
 			let colStr = (i%this.image.h).toString();
-			let rgb888 = parseInt(this.image.pixels[i].c.slice(1),16);
-			let rgb555 = ((rgb888 & 0xf80000) >> 8) | ((rgb888 & 0xf800) >> 6) | ((rgb888 & 0xf8) >> 3);
-			if(this.image.pixels[i].c == ignColor){
-				rgb555 = rgb555 & 0x007FFF;
-			}
-			else{
-				rgb555 = rgb555 & 0x007FFF;
-				rgb555 = rgb555 | 0x008000;
-			}
-			let colorStr = "x" + rgb555.toString(16);
-			codeStr = codeStr + "lc3ig" + "R" + rowStr + "C" + colStr + " .FILL " + colorStr + "<br>";
+			cs += `${prefix}R${rowStr}C${colStr} .FILL x${px[i].gR5(ign)}\n`;
 		}	
 		
-		codeStr = codeStr + "<br>.END";
+		cs += "\n.END";
 		
-		document.getElementById('txtboxCode').innerHTML = codeStr;
+		document.getElementById('txtboxCode').value = cs;
 	}
-	CopyCode(){
-		//navigator.clipboard.writeText(copyText.value);
+	CopyCode(){ // CopyCode
+		  let ct = document.getElementById("txtboxCode");
+		  let cb = document.getElementById("btnCopyCode");
+		  ct.select();
+		  ct.setSelectionRange(0, 99999); // For mobile devices
+		  navigator.clipboard.writeText(ct.value);
+		
+		  cb.innerText = "Copied!";
+		  setTimeout(function (){cb.innerText = "Copy";}, 2000);
 	}
 }

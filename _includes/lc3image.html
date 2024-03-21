@@ -1,30 +1,8 @@
-INSTRUCTIONS:
-<ol>
-	<li>Choose the width and height of the image. You are limited to<br>
-		50 pixels on each side.</li>
-	<li>Click "Update Size" and the green boundary will expand.</li>
-	<li>Choose the color which is ignored by the generator. This means<br>
-		that the MSb of the color will be zero. If you want all colors<br>
-		to NOT be ignored, then pick a color you are not using***.</li>
-	<li>Choose the color you want to turn the pixel. Then click that<br>
-		pixel, that is inside the green boundary. Clicking outside the<br>
-		boundary does nothing.</li>
-	<li>Once your image is ready, click "Generate Code" to get the LC-3.</li>
-	<li>Copy the LC-3 to your file and change the .ORIG to desired<br>
-		starting location.</li>
-	<li>Run the code.</li>
-</ol>
-*** Note: The LC-3 simulator ignores the MSb. This bit can be used to indicate<br>
-whether the color is printed or not. The generator sets this bit based on the <br>
-ignore color that is selected. If you don't check the MSb then all pixels will<br>
-print regardless of MSb.
-<br><br>
+Instructions are at the end of the page.
 
 <label>Width:</label> <input id="txtboxWidth" type="text" value="10" size="1">
 <label>Height:</label> <input id="txtboxHeight" type="text" value="10" size="1">
 <button type="button" id="btnLC3ImageSize">Update Size</button>
-<br>
-
 <label>Ignore: </label> <input type="color" id="ignColor" name="ignColor" value="#000000">
 <label>Color: </label> <input type="color" id="selColor" name="selColor" value="#FFFFFF">
 <br>
@@ -36,18 +14,32 @@ print regardless of MSb.
 </canvas>
 
 <br>
-<button type="button"
-		id="btnGenerateCode">
-Generate Code
-</button>
-<button type="button"
-		id="btnCopyCode">
-Copy
-</button>
+<label>ORIG: x</label> <input type="text" id="ig3Orig" name="ig3Orig" value="5000">
+<label>Prefix: </label> <input type="text" id="ig3Prefix" name="ig3Prefix" value="lc3image">
+<button type="button" id="btnGenerateCode">Generate Code</button>
+<button type="button" id="btnCopyCode">Copy</button>
 
 <label>LC-3 Code Output: </label>
 <br>
-<div id="txtboxCode" class="txtboxCode">
-<br>; LC-3 Image Generator<br>; Code will be outputted below.
-<script>callLC3ImageGenerator();</script>
-</div>
+<textarea id="txtboxCode" class="txtboxCode" readonly></textarea>
+<script>callIg3Obj();</script>
+
+INSTRUCTIONS:
+<ol>
+	<li>Choose the width and height of the image. You are limited to
+		50 pixels on each side.</li>
+	<li>Click "Update Size" and the green boundary will expand.</li>
+	<li>Choose the color which is ignored by the generator. This means
+		that the MSb of the color will be zero. If you want all colors
+		to NOT be ignored, then pick a color you are not using***.</li>
+	<li>Choose the color you want to turn the pixel. Then click that
+		pixel inside the green boundary. Clicking outside the
+		boundary does nothing.</li>
+	<li>Once your image is ready, click "Generate Code" to get the LC-3.</li>
+	<li>Copy the LC-3 to your file.</li>
+	<li>Run the code.</li>
+</ol>
+*** Note: The LC-3 simulator ignores the MSb. This bit can be used to indicate
+whether the color is printed or not. The generator sets this bit based on the 
+ignore color that is selected. If you don't check the MSb then all pixels will
+print regardless of MSb.
