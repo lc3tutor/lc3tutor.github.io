@@ -15,11 +15,6 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             id: 0
         },
         {
-            config: 'sepia',
-            text: 'Sepia',
-            id: 1
-        },
-        {
             config: 'night',
             text: 'Night',
             id: 2
@@ -225,7 +220,6 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     // Init configuration at start
     gitbook.events.bind('start', function(e, config) {
         var opts = config.fontsettings;
-
         // Generate buttons at start
         updateButtons();
 

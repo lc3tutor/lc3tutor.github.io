@@ -1,6 +1,7 @@
-// Ideally the javascript could be loaded with the post at the end.
-// Once I determine a way to best load the javascript we will use:
-// const objBaseConv = new baseConv();
+//
+//
+//
+const idBaseConv = 0x4F3E;
 var objBaseConv = null;
 var objCalc2sc = null;
 function callBaseConv() {

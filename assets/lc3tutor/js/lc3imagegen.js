@@ -1,6 +1,9 @@
-
+//
+//
+//
+const idLc3ImageGen = 0x4F3E;
 var ig3Obj = null;
-function callIg3Obj() {
+function callLc3ImageGen() {
 	ig3Obj = new LC3IG()
 }
 
@@ -19,6 +22,7 @@ class pixel {
 		this.ctx.fillRect(this.x, this.y, this.w, this.w);
 	}
 	gR5(ign='#000000') {
+		let ign_flag = true;
 		// rgb888
         let r8 = parseInt(this.c.slice(1),16);
 		// rgb555
@@ -28,8 +32,9 @@ class pixel {
 		r5 = r5 & 0x007FFF;
 		if(this.c != ign){
 			r5 = r5 | 0x008000;
+			ign_flag = false;
 		}
-		return r5.toString(16);
+		return [r5.toString(16), ign_flag];
 	}
 }
 
@@ -156,9 +161,42 @@ class LC3IG {
 		for(let i = 0; i < px.length; i++){
 			let rowStr = (parseInt(i/this.image.w)).toString();
 			let colStr = (i%this.image.h).toString();
-			cs += `${prefix}R${rowStr}C${colStr} .FILL x${px[i].gR5(ign)}\n`;
+			let [color, ign_flag] = px[i].gR5(ign);
+			cs += `${prefix}R${rowStr}C${colStr} .FILL x${color}\n`;
 		}	
 		
+		cs += "\n.END";
+		
+		document.getElementById('txtboxCode').value = cs;
+	}
+	GenCodeEncode() {
+		let px = this.image.pixels;
+		let ign = document.getElementById('ignColor').value;
+		let prefix = document.getElementById("ig3Prefix").value;
+		let orig = document.getElementById("ig3Orig").value;
+		let size = 3 + this.image.w*this.image.h - 1;
+		let end = (parseInt(orig, 16) + size).toString(16);
+		let offset = 128-this.image.w;
+		// Code String
+		let cs = `; LC3 Image Generator\n\n` +
+		         `; Using ${prefix} prefix to ensure unique labels.\n` +
+				 `; Image is ${size} words and uses memory x${orig} to x${end}.\n` +
+				 `.ORIG x${orig}\n\n`
+
+		let prev = 0;
+		for(let i = 0; i < px.length; i++){
+			let [color, ign_flag] = px[i].gR5(ign);
+			if(!ign_flag){
+                let row = (parseInt(i/this.image.w));
+				let col = (i%this.image.h);
+				let colorLoc = col + row*128;
+				let diff = colorLoc - prev;
+				cs += `${prefix}Pix${i}Offset .FILL #${diff}\n`;
+				cs += `${prefix}Pix${i}Color  .FILL x${color}\n`;
+				prev = colorLoc;
+			}
+		}	
+		cs += `${prefix}End .FILL #${0}\n`;
 		cs += "\n.END";
 		
 		document.getElementById('txtboxCode').value = cs;

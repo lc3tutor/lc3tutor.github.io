@@ -45,11 +45,11 @@
   font-size: 1em;
 }
 .book.color-theme-1 .book-body {
-  color: #704214;
-  background: #f3eacb;
+  color: #bdcadb;
+  background: #1c1f2b;
 }
 .book.color-theme-1 .book-body .page-wrapper .page-inner section {
-  background: #f3eacb;
+  background: #1c1f2b;
 }
 .book.color-theme-2 .book-body {
   color: #bdcadb;

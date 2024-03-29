@@ -28,3 +28,58 @@ tr:nth-child(even) {
 .th-c {
 	text-align: center;
 }
+
+.accordion {
+    background-color: #eee;
+    background: transparent;
+    color: #c1c6d7;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    list-style-type: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.accordion-inner {
+    background: transparent;
+    padding: 0px;
+}
+
+.accordion-inner-inner {
+  background: transparent;
+  padding-left: 54px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.active, .accordion:hover, .accordion-page:hover, .accordion-page:active {
+    background-color: #252737;
+    border: 1px solid #1c1f2b;
+}
+
+.accordion-page {
+  padding: 14px 25px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navi-link {
+    padding-left: 0px;
+}
+
+.panel {
+    padding-left: 0px;
+    background: transparent;
+    display: none;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+}
