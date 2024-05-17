@@ -13,7 +13,7 @@ nextp: '/using-breakpoints'
 
 This article uses the ghost user program in the [git repository](https://github.com/lc3tutor/lc3code/).
 
-Below on the left is the user program code. On the right is the red ghost LC3 image code. The red ghost code was generated using the LC3 [Image Generator tool](/b-1/).
+Below on the left is the user program code. On the right is the red ghost LC3 image code. The red ghost code was generated using the LC3 [Image Generator tool](/lc3-image-generator).
 
 {% include codesnip.html filename="ghost.asm" %}
 {% include codesnip.html filename="redghost.asm" %}
