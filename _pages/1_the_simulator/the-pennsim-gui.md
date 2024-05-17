@@ -1,11 +1,13 @@
 ---
 title: 1.1. The PennSim GUI
 author: lc3tutor
-date: 2024-02-29
+date: 2024-02-29 
 category: pages
 layout: post
+slug: the-pennsim-gui
+permalink: /the-pennsim-gui
 prevp: '/'
-nextp: '/1-2/'
+nextp: '/basic-commands'
 ---
 
 These tutorials will be using the PennSim LC3 simulator from the University of Pennsylvania.

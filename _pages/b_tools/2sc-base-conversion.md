@@ -4,7 +4,9 @@ author: lc3tutor
 date: 2024-02-29
 category: pages
 layout: post
-prevp: '/b-1/'
+slug: 2sc-base-conversion
+permalink: /2sc-base-conversion
+prevp: '/lc3-image-generator'
 baseconv: true
 ---
 

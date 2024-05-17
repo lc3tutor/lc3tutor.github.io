@@ -17,16 +17,22 @@
  * Table related CSS.
  *
  */
-tr:nth-child(even) {
+/*tr:nth-child(even) {
 	background-color: #c3c6c9;
-}
+}*/
 
 .td-c {
 	text-align: center;
+  padding: 0px;
 }
 
 .th-c {
 	text-align: center;
+  width: 200px;
+}
+
+.tr-c {
+  height: 10px;
 }
 
 .accordion {

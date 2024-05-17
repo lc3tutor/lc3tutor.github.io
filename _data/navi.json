@@ -5,33 +5,56 @@
             "subsections":[
             {
               "title":"1.1. The PennSim GUI",
-              "link":"/1-1/"
+              "link" :"/the-pennsim-gui",
+              "prev" : "/",
+              "next" : "/basic-commands"
             },
             {
               "title":"1.2. Basic Commands",
-              "link":"/1-2/"
+              "link" :"/basic-commands",
+              "prev" : "/the-pennsim-gui",
+              "next" : "/run-a-program"
             },
             {
               "title":"1.3. Run a Program",
-              "link":"/1-3/"
+              "link" :"/run-a-program",
+              "prev" : "/basic-commands",
+              "next" : "/script-command"
             },
             {
               "title":"1.4. Script Command",
-              "link":"/1-4/"
+              "link" :"/script-command",
+              "prev" : "/run-a-program",
+              "next" : "/using-breakpoints"
             },
             {
               "title":"1.5. *Using Breakpoints",
-              "link":"/1-5/"
+              "link" :"/using-breakpoints",
+              "prev" : "/script-command",
+              "next" : "/number-bases"
             }
           ]
         },
         {
-            "title":"2. The Basics",
+            "title":"2. The LC3 Basics",
             "subsections":[
                 {
                   "title":"2.1. Number Bases",
-                  "link":"/2-1/"
+                  "link" :"/number-bases",
+                  "prev" : "/using-breakpoints",
+                  "next" : "/basic-input"
                 }
+            ]
+        },
+        {
+            "title":"3. Basic IO",
+            "subsections":[
+              {
+                "title":"3.1. Basic Input",
+                "link" :"/basic-input",
+                "prev" :"/number-bases",
+                "next" :"/value-to-binary-string"
+              }
             ]
         },
         {
@@ -39,7 +62,9 @@
             "subsections":[
                 {
                   "title":"A.1. Value to Binary String",
-                  "link":"/a-1/"
+                  "link" :"/value-to-binary-string",
+                  "prev" : "/number-bases",
+                  "next" : "/lc3-image-generator"
                 }
             ]
         },
@@ -48,11 +73,15 @@
             "subsections":[
                 {
                   "title":"B.1. LC3 Image Generator",
-                  "link":"/b-1/"
+                  "link" :"/lc3-image-generator",
+                  "prev" : "/value-to-binary-string",
+                  "next" : "/2sc-base-conversion"
                 },
                 {
                   "title":"B.2. 2sC Base Conversion",
-                  "link":"/b-2/"
+                  "link" :"/2sc-base-conversion",
+                  "prev" : "/lc3-image-generator",
+                  "next" : "/"
                 }
             ]
         }

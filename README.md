@@ -1,8 +1,9 @@
 ---
 layout: home
 title: LC3Tutor
+description: Information to help you get started building LC3 programs. How to use the PennSim LC3 simulator to run and debug LC3 code. Many LC3 code examples are provided in the linked git repository.
 permalink: /
-nextp: '/1-1/'
+nextp: '/the-pennsim-gui'
 ---
 
 Welcome to LC3 Tutor. This website has information to get you started building LC3 programs. The LC3 architecture is itself a tool for learning the basics of computing systems and is usually found in introductory computer engineering classes and these classes involve assignments that require LC3 assembly programming. This website is for those needing help with LC3 assignments or for those looking to self learn for their own reasons.

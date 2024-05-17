@@ -4,8 +4,10 @@ author: lc3tutor
 date: 2024-03-01
 category: pages
 layout: post
-prevp: '/1-4/'
-nextp: '/2-1/'
+slug: using-breakpoints
+permalink: /using-breakpoints
+prevp: '/script-command'
+nextp: '/number-bases'
 ---
 
 Future Content. Stay tuned!

@@ -226,7 +226,7 @@ function popTab(c, rfn) {
 		var tr = document.createElement("tr");
 		var td1 = document.createElement("td");
 		td1.className = "line-num"
-		td1.innerHTML = i.toString() + " ";
+		td1.innerHTML = (i+1).toString() + " ";
 		var td2 = document.createElement("td");
 		td2.innerHTML = c[i];
 		tr.appendChild(td1);

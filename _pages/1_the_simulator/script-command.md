@@ -1,11 +1,14 @@
 ---
 title: 1.4. Script Command
+description: How to leverage the script command in the PennSim simulator to quickly run LC3 code. Useful for when needing to debug and when you have multiple programs to assemble and load.
 author: lc3tutor
 date: 2024-02-29
 category: pages
 layout: post
-prevp: '/1-3/'
-nextp: '/1-5/'
+slug: script-command
+permalink: /script-command
+prevp: '/run-a-program'
+nextp: '/using-breakpoints'
 ---
 
 This article uses the ghost user program in the [git repository](https://github.com/lc3tutor/lc3code/).

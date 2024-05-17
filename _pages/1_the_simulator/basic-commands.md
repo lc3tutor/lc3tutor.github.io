@@ -4,8 +4,10 @@ author: lc3tutor
 date: 2024-02-29
 category: pages
 layout: post
-prevp: '/1-1/'
-nextp: '/1-3/'
+slug: basic-commands
+permalink: /basic-commands
+prevp: '/the-pennsim-gui'
+nextp: '/run-a-program'
 ---
 
 In this section we will cover a few basic commands needed to use PennSim. The “script” and “break” commands have their own sections. You can type “help” in the command line to list the available commands. You can also input “help <command>” to get more information on a command.

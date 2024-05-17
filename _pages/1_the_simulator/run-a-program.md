@@ -4,8 +4,10 @@ author: lc3tutor
 date: 2024-03-01
 category: pages
 layout: post
-prevp: '/1-2/'
-nextp: '/1-4/'
+slug: run-a-program
+permalink: /run-a-program
+prevp: '/basic-commands'
+nextp: '/script-command'
 ---
 
 This section goes over how to run a user created LC3 program.
@@ -16,7 +18,7 @@ Have the proper LC3 assembly files along with PennSim working,
 Assemble each assembly file to create a symbol and object file,
 Load each object file,
 Click or type the command for Continue.
-If you don’t know the commands then look over this section, [1.2. Basic Commands](/1-2/).
+If you don’t know the commands then look over this section, [1.2. Basic Commands](/basic-commands).
 
 ## 1. The Assembly Code:
 

@@ -4,8 +4,10 @@ author: lc3tutor
 date: 2024-02-29
 category: pages
 layout: post
-prevp: '/a-1/'
-nextp: '/b-2/'
+slug: lc3-image-generator
+permalink: /lc3-image-generator
+prevp: '/value-to-binary-string'
+nextp: '/2sc-base-conversion'
 lc3imagegen: true
 ---
 

@@ -4,11 +4,13 @@ author: lc3tutor
 date: 2024-02-29
 category: pages
 layout: post
-prevp: '/1-5/'
-nextp: '/a-1/'
+slug: number-bases
+permalink: /number-bases
+prevp: '/using-breakpoints'
+nextp: '/basic-input'
 ---
 
-In this section because numbers of different bases can look alike, when the context is not clear the base will be denoted with a: **#** for decimal, **b** for binary, and **x** for hexadecimal. For example the decimal value 229 would be denoted as #229, b11100101, and xE5 respectively.
+In this section we will discuss number bases and because numbers of different bases can look alike, when the context is not clear the base will be denoted with a: **#** for decimal, **b** for binary, and **x** for hexadecimal. For example the decimal value 229 would be denoted as #229, b11100101, and xE5 respectively.
 
 ## Decimal (Base 10)
 This is a pretty basic review of the decimal number base. Decimal values are what we commonly use. The temperature is 75 F or 23.8889 C. There are 54 students, and so on. Each digit of a decimal value can be between 0 and 9. When a digit exceeds 9, the next digit to the left increments by 1. The right most digit is usually the least significant digit while the left most digit is usually the most significant digit. The most significant digit gives the largest increase in value per increment. For example, if we increment 799 by 1, we add it to the least significant digit and end up with 800.
@@ -39,7 +41,7 @@ In this section, binary to hex, binary to decimal and the reverse of each will b
 		<th class="th-c">Power of 2</th>
 		<th class="th-c">Decimal</th>
 	</tr>
-	<tr>
+	<tr class="tr-c">
 		<td class="td-c">$$2^0$$</td>
 		<td class="td-c">1</td>
 	</tr>
@@ -83,7 +85,7 @@ In this section, binary to hex, binary to decimal and the reverse of each will b
         <th class="th-c">Hex</th>
 		<th class="th-c">Binary</th>
 	</tr>
-	<tr>
+	<tr class="tr-c">
 		<td class="td-c">0</td>
 		<td class="td-c">0</td>
         <td class="td-c">0000</td>
