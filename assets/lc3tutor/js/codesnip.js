@@ -224,11 +224,13 @@ function popTab(c, rfn) {
 
 	for (var i = 0; i < c.length; i++) {
 		var tr = document.createElement("tr");
+		tr.className = "codesnip-row";
 		var td1 = document.createElement("td");
-		td1.className = "line-num"
+		td1.className = "line-num";
 		td1.innerHTML = (i+1).toString() + " ";
 		var td2 = document.createElement("td");
 		td2.innerHTML = c[i];
+		td2.className = "line-code";
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 		table.appendChild(tr);

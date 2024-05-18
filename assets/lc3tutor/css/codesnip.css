@@ -1,16 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+
 .gistTab {
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-	font: inherit Courier New;
+	font-family: 'Courier New';
+    font-size: 1em !important;
+    line-height: 1;
 }
+
+.codesnip-row {
+    height: 0;
+}
+
 th, td {
 	border-collapse: collapse;
 	white-space: pre;
 }
 .line-num {
-	background-color: #faf5f5;
+    background-color: #faf5f5;
+    padding: 0 !important;
+    /*font-family: 'Courier New';*/
 }
+.line-code {
+    padding: 0 !important;
+}
+
 .gistwrapper {
 	margin: auto;
 	max-width: 525px;
