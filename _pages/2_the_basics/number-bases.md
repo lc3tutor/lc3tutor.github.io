@@ -1,5 +1,6 @@
 ---
 title: 2.1. Number Bases
+description: Before working with assembly code, knowledge about the 2, 10, and 16 number bases is required. This article reviews binary, demcimal, and hexadecimal numbers.
 author: lc3tutor
 date: 2024-02-29
 category: pages

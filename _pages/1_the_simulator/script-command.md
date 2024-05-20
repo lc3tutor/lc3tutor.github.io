@@ -1,6 +1,6 @@
 ---
 title: 1.4. Script Command
-description: How to leverage the script command in the PennSim simulator to quickly run LC3 code. Useful for when needing to debug and when you have multiple programs to assemble and load.
+description: How to leverage the script command in the PennSim simulator to quickly run LC3 code. Useful for when needing to debug and assemble and load multiple LC3 files.
 author: lc3tutor
 date: 2024-02-29
 category: pages

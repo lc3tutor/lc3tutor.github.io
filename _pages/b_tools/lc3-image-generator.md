@@ -1,5 +1,6 @@
 ---
 title: B.1. LC3 Image Generator
+description: Tool to visually design and generate code for LC3 image sprites.
 author: lc3tutor
 date: 2024-02-29
 category: pages

@@ -1,5 +1,6 @@
 ---
 title: 1.2. Basic Commands
+description: The basic PennSim commands needed to get started running LC3 code. Commands such as load (ld), assembly (as), clear, reset, and continue.
 author: lc3tutor
 date: 2024-02-29
 category: pages

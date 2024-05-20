@@ -1,5 +1,6 @@
 ---
 title: B.2. 2sC Base Conversion
+description: A tool to quickly convert 16 bit two's complement (2sC) values between binary, decimal, and hexadecimal and to calculate the addition or subtraction of two 16 bit 2sC values.
 author: lc3tutor
 date: 2024-02-29
 category: pages

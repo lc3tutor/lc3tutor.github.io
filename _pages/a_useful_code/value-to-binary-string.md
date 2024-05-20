@@ -1,5 +1,6 @@
 ---
 title: A.1. Value to Binary String
+description: LC3 code that take the value in a register or memory and prints the binary string of that value to the console.
 author: lc3tutor
 date: 2024-02-29
 category: pages

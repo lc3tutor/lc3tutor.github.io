@@ -1,5 +1,6 @@
 ---
 title: 1.1. The PennSim GUI
+description: A quick run down of the PennSim GUI that will be needed to build, simulate, and debug LC3 code.
 author: lc3tutor
 date: 2024-02-29 
 category: pages
