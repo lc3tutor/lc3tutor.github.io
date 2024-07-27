@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 
+a.page-link {
+  color: #bdcadb !important;
+}
+
 .ctnr_btn_start {
   display: flex;
   justify-content: center; /* center horizontally */

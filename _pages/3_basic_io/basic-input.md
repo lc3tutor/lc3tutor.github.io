@@ -12,7 +12,7 @@ nextp: '/value-to-binary-string'
 prereqs: Requires basic knowledge of the AND and NOT LC3 commands.
 ---
 
-To get input from the user, we will use the OS call GETC. This OS call represents the LC3 instruction TRAP x20. When called, GETC polls the keyboard until a key is pressed then returns the character's [ASCII](https://www.asciitable.com/){:target="_blank"} value in register R0.
+To get input from the user, we will use the OS call GETC. This OS call represents the LC3 instruction TRAP x20. When called, GETC polls the keyboard until a key is pressed then returns the character's [ASCII](/ascii-table){:target="_blank"} value in register R0.
 
 GETC only polls one character at a time, so it must be called many times if the user input is a string with more than 1 character.
 

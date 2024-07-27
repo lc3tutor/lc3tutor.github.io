@@ -81,6 +81,12 @@
                   "title":"B.2. 2sC Base Conversion",
                   "link" :"/2sc-base-conversion",
                   "prev" : "/lc3-image-generator",
+                  "next" : "/ascii-table"
+                },
+                {
+                  "title":"B.3. ASCII Table",
+                  "link" :"/ascii-table",
+                  "prev" : "/2sc-base-conversion",
                   "next" : "/"
                 }
             ]

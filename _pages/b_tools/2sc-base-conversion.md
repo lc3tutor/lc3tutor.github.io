@@ -8,6 +8,7 @@ layout: post
 slug: 2sc-base-conversion
 permalink: /2sc-base-conversion
 prevp: '/lc3-image-generator'
+nextp: '/ascii-table'
 baseconv: true
 ---
 

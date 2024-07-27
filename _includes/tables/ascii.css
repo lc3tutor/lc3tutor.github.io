@@ -1,0 +1,25 @@
+
+div.asciitab {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+table.asciitab {
+    width: 305px;
+}
+
+tr.asciitab {
+    height: 25px;
+}
+
+th.asciitab {
+    height: 23px;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+td.asciitab {
+    height: 23px;
+    white-space: nowrap;
+    padding-right: 10px;
+}
