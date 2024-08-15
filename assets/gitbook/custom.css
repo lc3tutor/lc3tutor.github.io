@@ -58,15 +58,16 @@
 }
 
 .book.color-theme-2 .book-body .book-header {
-    background: #1c1f2b;
+    background: var(--bg-color);
 }
 
 .page-inner {
     max-width: {{ site.page_width | default: '800px' }};
 }
 
+/* Determines location of up arrow. */
 .back-to-top {
-    right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 50px);
+    right: calc((100% - 100px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 50px);
 }
 
 /* scrollbar */
@@ -269,19 +270,3 @@
     background-color: #ffffff;
     text-align: center;
 } DELETE LATER*/
-
-:root {
-    --c-tip: #42b983;
-    --c-tip-bg: #e2f5ec;
-    --c-tip-text: #215d42;
-    --c-tip-title: #359469;
-    --c-warning: #e7c000;
-    --c-warning-bg: rgba(255, 229, 100, .25);
-    --c-warning-text: #6b5900;
-    --c-warning-title: #b29400;
-    --c-danger: #c00;
-    --c-danger-bg: #ffe0e0;
-    --c-danger-text: #600;
-    --c-danger-title: #c00;
-    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}

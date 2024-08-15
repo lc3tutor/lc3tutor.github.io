@@ -38,13 +38,15 @@ th, td {
 	width: 100%;
 	max-height: 300px;
 	overflow: auto;
-}	
+}
+
+/* LC3 Syntax Highlighting. */
 .opcode {
-	color: blue;
+	color: var(--opcode-color);
 	font-weight: bold;
 }
 .directive {
-	color: black;
+	color: var(--directive-color);
 	font-weight: bold;
 }
 .oscall {
@@ -52,15 +54,16 @@ th, td {
 	font-weight: bold;
 }
 .register {
-	color: #800000;
+	color: var(--register-color);
 	font-weight: bold;
 }
 .number {
 	color: orange;
 }
 .comment {
-	color: #006600;
+	color: var(--comment-color);
 }
 .string {
-	color: gray;
+	color: var(--string-color);
 }
+/* End LC3 Syntax Highlighting. */

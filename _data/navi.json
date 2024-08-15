@@ -42,7 +42,7 @@
                   "title":"2.1. Number Bases",
                   "link" :"/number-bases",
                   "prev" : "/using-breakpoints",
-                  "next" : "/basic-input"
+                  "next" : "/basic-input-output"
                 }
             ]
         },
@@ -50,8 +50,8 @@
             "title":"3. Basic IO",
             "subsections":[
               {
-                "title":"3.1. Basic Input",
-                "link" :"/basic-input",
+                "title":"3.1. Basic Input / Output",
+                "link" :"/basic-input-output",
                 "prev" :"/number-bases",
                 "next" :"/value-to-binary-string"
               }
@@ -63,7 +63,7 @@
                 {
                   "title":"A.1. Value to Binary String",
                   "link" :"/value-to-binary-string",
-                  "prev" : "/number-bases",
+                  "prev" : "/basic-input-output",
                   "next" : "/lc3-image-generator"
                 }
             ]

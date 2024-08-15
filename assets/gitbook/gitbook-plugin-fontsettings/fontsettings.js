@@ -119,6 +119,8 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             }
         }
 
+        toggleLightDark(fontState.theme);
+
         saveFontSettings();
     }
 
@@ -147,6 +149,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     function update() {
         var $book = gitbook.state.$book;
 
+        console.log(fontState)
         $('.font-settings .font-family-list li').removeClass('active');
         $('.font-settings .font-family-list li:nth-child('+(fontState.family+1)+')').addClass('active');
 
@@ -158,10 +161,13 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, '');
             $book.addClass('color-theme-'+fontState.theme);
         }
+        document.documentElement.classList.toggle('color-theme-'+fontState.theme);
+        console.log('color-theme-'+fontState.theme);
     }
 
     function init(config) {
         // Search for plugin configured font family
+        console.log(config);
         var configFamily = getFontFamilyId(config.family),
             configTheme = getThemeId(config.theme);
 
@@ -171,7 +177,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             family: configFamily,
             theme:  configTheme
         });
-
+        console.log(fontState);
         update();
     }
 

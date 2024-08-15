@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 
+p.tester {
+  color: var(--text-color) !important;
+}
+
+h1.tester {
+  color: var(--text-color) !important;
+}
+
+.light-mode h1 {
+  color: #252737 !important;
+}
+
+.dark-mode h1 {
+  color: #bdcadb !important;
+}
+
 a.page-link {
   color: #bdcadb !important;
 }

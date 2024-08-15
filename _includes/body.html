@@ -1,3 +1,4 @@
+<!-- Start body.html -->
 <div class="page-wrapper" tabindex="-1" role="main">
     {% if page.cover %}
         <img src="{{ page.cover }}"
@@ -54,3 +55,5 @@
 {%- if page.lc3imagegen %}
 <script>if(typeof idLc3ImageGen === 'undefined'){loadScript('{{site.jsurl}}lc3imagegen.js', function() {callLc3ImageGen();});}else{callLc3ImageGen();}</script>
 {% endif -%}
+
+<!-- End body.html -->

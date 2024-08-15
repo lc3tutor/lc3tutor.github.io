@@ -1,0 +1,56 @@
+/* Used for all global variables. */
+:root {
+    --text-color-light   : #333;
+    --text-color-dark    : #bdcadb;
+    --text-color         : var(--text-color-light);
+
+    --h1-color-light     : #333;
+    --h1-color-dark      : #fffffa;
+    --h1-color           : var(--h1-color-light);
+
+    --bg-color-light     : #fff;
+    --bg-color-dark      : #1c1f2b;
+    --bg-color           : var(--bg-color-light);
+
+    --bg-nav-color-light : #fafafa;
+    --bg-nav-color-dark  : #2d3143;
+    --bg-nav-color       : var(--bg-nav-color-light);
+
+    /* Begin LC3 Code Snip Colors. */
+    --opcode-color-light : blue;
+    --opcode-color-dark  : #636acb;
+    --opcode-color       : var(--opcode-color-light);
+
+    --comment-color-light: #006600;
+    --comment-color-dark : #38bd38;
+    --comment-color      : var(--comment-color-light);
+
+    --directive-color-light: #333;
+    --directive-color-dark : #bdcadb;
+    --directive-color      : var(--directive-color-light);
+
+    --register-color-light: #800000;
+    --register-color-dark : #a44ed7;
+    --register-color      : var(--register-color-light);
+
+    --string-color-light: gray;
+    --string-color-dark : gray;
+    --string-color      : var(--string-color-light);
+
+    /* End LC3 Code Snip Colors. */
+
+    /* Provided by gitbook. */
+    --c-tip: #42b983;
+    --c-tip-bg: #e2f5ec;
+    --c-tip-text: #215d42;
+    --c-tip-title: #359469;
+    --c-warning: #e7c000;
+    --c-warning-bg: rgba(255, 229, 100, .25);
+    --c-warning-text: #6b5900;
+    --c-warning-title: #b29400;
+    --c-danger: #c00;
+    --c-danger-bg: #ffe0e0;
+    --c-danger-text: #600;
+    --c-danger-title: #c00;
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}

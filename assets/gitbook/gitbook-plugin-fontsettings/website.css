@@ -53,10 +53,10 @@
 }
 .book.color-theme-2 .book-body {
   color: #bdcadb;
-  background: #1c1f2b;
+  background: var(--bg-color);
 }
 .book.color-theme-2 .book-body .page-wrapper .page-inner section {
-  background: #1c1f2b;
+  background: var(--bg-color);
 }
 .book.font-size-0 .book-body .page-inner section {
   font-size: 1.2rem;
@@ -124,9 +124,9 @@
   background-color: #fdf6e3;
   border-color: #444444;
 }
-.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table tr:nth-child(2n) {
+/*.book.color-theme-1 .book-body .page-wrapper .page-inner section.normal table tr:nth-child(2n) {
   background-color: #fbeecb;
-}
+}*/
 .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal {
   color: #bdcadb;
 }
@@ -172,9 +172,9 @@
   background-color: #2d3143;
   border-color: #3b3f54;
 }
-.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal table tr:nth-child(2n) {
+/*.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal table tr:nth-child(2n) {
   background-color: #35394b;
-}
+}*/
 .book.color-theme-1 .book-header {
   color: #afa790;
   background: transparent;
@@ -258,6 +258,7 @@
 .book.color-theme-2 .book-summary {
   color: #bcc1d2;
   background: #2d3143;
+  background: var(--bg-nav-color);
   border-right: none;
 }
 .book.color-theme-2 .book-summary .book-search {

@@ -1,5 +1,5 @@
 ;
-; LC3 Tutor - basicinput.asm
+; LC3 Tutor - basicinputoutput.asm
 ;
 ; Prints a prompt to the user and gets the user input.
 ;
@@ -9,7 +9,7 @@
     PUTS ; This prints the string prompt1. It is an OS call.
 
     GETC ; Gets one character from the user and puts into R0.
-    ;OUT ; Uncomment to echo user input.
+    OUT ; Uncomment to echo user input.
 
     ; Without LD/ST we must use multiple ADD/AND/NOT.
     AND R1, R1, #0 ; Clear R1.
