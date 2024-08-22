@@ -53,9 +53,20 @@
                 "title":"3.1. Basic Input / Output",
                 "link" :"/basic-input-output",
                 "prev" :"/number-bases",
-                "next" :"/value-to-binary-string"
+                "next" :"/limit-user-input"
               }
             ]
+        },
+        {
+          "title":"4. Flow Control",
+          "subsections":[
+            {
+              "title":"4.3. Limiting User Input",
+              "link" :"/limit-user-input",
+              "prev" :"/basic-input-output",
+              "next" :"/value-to-binary-string"
+            }
+          ]
         },
         {
             "title":"A. Useful Code",
@@ -63,7 +74,7 @@
                 {
                   "title":"A.1. Value to Binary String",
                   "link" :"/value-to-binary-string",
-                  "prev" : "/basic-input-output",
+                  "prev" : "/limit-user-input",
                   "next" : "/lc3-image-generator"
                 }
             ]

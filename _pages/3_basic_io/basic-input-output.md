@@ -8,7 +8,7 @@ layout: post
 slug: basic-input-output
 permalink: /basic-input-output
 prevp: '/number-bases'
-nextp: '/value-to-binary-string'
+nextp: '/limit-user-input'
 prereqs: Requires basic knowledge of the AND and NOT LC3 commands.
 ---
 

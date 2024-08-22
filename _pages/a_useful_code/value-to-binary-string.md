@@ -7,7 +7,7 @@ category: pages
 layout: post
 slug: value-to-binary-string
 permalink: /value-to-binary-string
-prevp: '/basic-input-output'
+prevp: '/limit-user-input'
 nextp: '/lc3-image-generator'
 ---
 

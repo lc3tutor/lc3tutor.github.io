@@ -9,7 +9,7 @@
     PUTS ; This prints the string prompt1. It is an OS call.
 
     GETC ; Gets one character from the user and puts into R0.
-    OUT ; Uncomment to echo user input.
+    OUT ; Echo user input.
 
     ; Without LD/ST we must use multiple ADD/AND/NOT.
     AND R1, R1, #0 ; Clear R1.
