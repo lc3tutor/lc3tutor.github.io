@@ -12,7 +12,7 @@ nextp: '/value-to-binary-string'
 prereqs: Requires knowledge on the branch instruction, BRnzp.
 ---
 
-Review these section [branching](/) and [memory load / store](/).
+Review these sections: [branching](/) and [memory load / store](/).
 
 This section will build upon the uppercase to lowercase conversion example in [basic input / output](/basic-input-output) to show how a user's input can be restricted to satisfy the need of the program. The concepts introduced here can be used to approach many different problems.
 

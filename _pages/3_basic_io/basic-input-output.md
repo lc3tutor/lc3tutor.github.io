@@ -7,7 +7,7 @@ category: pages
 layout: post
 slug: basic-input-output
 permalink: /basic-input-output
-prevp: '/number-bases'
+prevp: '/work-with-ascii'
 nextp: '/limit-user-input'
 prereqs: Requires basic knowledge of the AND and NOT LC3 commands.
 ---
@@ -43,7 +43,7 @@ Rather than put an ASCII value in `R0`, for `PUTS` we must put the address of th
 
 ## Example Program
 
-The program below takes in a character from the user and outputs the lower case of that letter. Only uppercase letters are valid input but the input is not checked, so you can input non-letters. Check out this page, [limiting user input](/) to see how the user input can be limited to letters. The program does the following:
+The program below takes in a character from the user and outputs the lower case of that letter. Only uppercase letters are valid input but the input is not checked, so you can input non-letters. Check out this page, [limiting user input](/limit-user-input) to see how the user input can be limited to letters. The program does the following:
 
 1. Outputs the first prompt to the console to let the user know what is needed.
 2. The input is received from the user, stored in `R0`, then displayed back to the user.
