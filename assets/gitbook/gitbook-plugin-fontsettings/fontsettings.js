@@ -204,6 +204,9 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         }
         document.documentElement.classList.toggle('color-theme-'+fontState.theme);
         console.log('color-theme-'+fontState.theme);
+        let themeChecked = false;
+        if(fontState.theme !== 0) themeChecked = true; 
+        document.querySelector('.theme-switch input[type="checkbox"]').checked = themeChecked;
     }
 
     function init(config) {
@@ -263,9 +266,6 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             ]
         });*/
         let themeToggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        let themeChecked = false;
-        if(state.theme !== 0) themeChecked = true; 
-        themeToggleSwitch.checked = themeChecked;
         themeToggleSwitch.addEventListener('change', changeLC3ColorTheme, false);
     }
 
