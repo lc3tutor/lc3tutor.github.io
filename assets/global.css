@@ -17,25 +17,49 @@
     --bg-nav-color       : var(--bg-nav-color-light);
 
     /* Begin LC3 Code Snip Colors. */
-    --opcode-color-light : blue;
-    --opcode-color-dark  : #636acb;
+    --opcode-color-light : #5399ca;
+    --opcode-color-dark  : #5399ca;
     --opcode-color       : var(--opcode-color-light);
 
     --comment-color-light: #006600;
-    --comment-color-dark : #38bd38;
+    --comment-color-dark : #45873a;
     --comment-color      : var(--comment-color-light);
 
-    --directive-color-light: #333;
-    --directive-color-dark : #bdcadb;
+    --directive-color-light: #6f7a0c;
+    --directive-color-dark : #8c897b;
     --directive-color      : var(--directive-color-light);
 
     --register-color-light: #800000;
-    --register-color-dark : #a44ed7;
+    --register-color-dark : #42a171;
     --register-color      : var(--register-color-light);
 
     --string-color-light: gray;
-    --string-color-dark : gray;
+    --string-color-dark : #d69d85;
     --string-color      : var(--string-color-light);
+
+    --oscall-color-light: blue;
+    --oscall-color-dark : #85d7ee;
+    --oscall-color      : var(--oscall-color-light);
+
+    --number-color-light: #f8a11e;
+    --number-color-dark : #aec996;
+    --number-color      : var(--number-color-light);
+
+    --label-color-light: black;
+    --label-color-dark : #dcd99b;
+    --label-color      : var(--label-color-light);
+
+    --unknown-color-light: #9381c8;
+    --unknown-color-dark : #9381c8;
+    --unknwon-color      : var(--unknown-color-light);
+
+    --lc3code-bgc-light : #fafafa;
+    --lc3code-bgc-dark  : #2d3143;
+    --lc3code-bgc       : var(--lc3code-bgc-light);
+
+    --linenumber-bgc-light: #e6e6e6;
+    --linenumber-bgc-dark : #292d3d;
+    --linenumber-bgc      : var(--linenumber-bgc-light);
 
     /* End LC3 Code Snip Colors. */
 

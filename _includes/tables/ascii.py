@@ -51,14 +51,15 @@ table.asciitab {
 tr.asciitab {
     height: auto;
 }
-th.asciitab {
+th.asciitab, td.asciitab {
     height: auto;
     text-align: left;
     white-space: nowrap;
     padding: 0px 1px 0px 1px !important;
 }
-td.asciitab {
+th.asciitabbreak, td.asciitabbreak {
     height: auto;
+    width: 20px;
     text-align: left;
     white-space: nowrap;
     padding: 0px 1px 0px 1px !important;
@@ -74,19 +75,18 @@ fp.write(
 """        <tr class="asciitab">
             <th class="asciitab">Dec</th>
             <th class="asciitab">Hex</th>
-            <th class="asciitab">Oct</th>
             <th class="asciitab">Char</th>
+            <th class="asciitabbreak"></th>
             <th class="asciitab">Dec</th>
             <th class="asciitab">Hex</th>
-            <th class="asciitab">Html</th>
             <th class="asciitab">Char</th>
+            <th class="asciitabbreak"></th>
             <th class="asciitab">Dec</th>
             <th class="asciitab">Hex</th>
-            <th class="asciitab">Oct</th>
             <th class="asciitab">Char</th>
+            <th class="asciitabbreak"></th>
             <th class="asciitab">Dec</th>
             <th class="asciitab">Hex</th>
-            <th class="asciitab">Oct</th>
             <th class="asciitab">Char</th>
         </tr>
 """)
@@ -95,11 +95,12 @@ for i in range(0,32):
     for j in [0, 32, 64, 96]:
         fp.write(f"            <td class=\"asciitab\">{i+j}</td>\n")
         fp.write(f"            <td class=\"asciitab\">{i+j:X}</td>\n")
-        fp.write(f"            <td class=\"asciitab\">{i+j:03o}</td>\n")
         if (i+j in special_char):
             fp.write(f"            <td class=\"asciitab\"><b>{special_char[i+j]}</b></td>\n")
         else:
             fp.write(f"            <td class=\"asciitab\"><b>{chr(i+j)}</b></td>\n")
+        if (j != 96):
+            fp.write(f"            <td class=\"asciitabbreak\"></td>\n")
     fp.write("        </tr>\n")
 
 fp.write("    </tbody>\n")

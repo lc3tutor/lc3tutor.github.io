@@ -1,5 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 
+div.lc3code-container {
+	display: flex;
+	width: 95%;
+	margin: auto;
+	background-color: var(--lc3code-bgc);
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+
+div.linenumber-gutter {
+	max-height: 400px;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	padding-right: 10px;
+	text-align: right;
+    width: 7%;
+	background-color: var(--linenumber-bgc);
+}
+
+div.lc3code-gutter {
+	max-height: 400px;
+	overflow-x: scroll;
+	overflow-y: scroll;
+	padding-left: 2px;
+	width: 93%;
+}
+
+div.lc3code, div.linenumber {
+    font-family: 'Courier New';
+    font-size: 1em !important;
+    line-height: 1;
+	white-space: nowrap;
+}
+
+.lc3code{
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Courier New';
+    font-size: 1em !important;
+    line-height: 1;
+}
+
 .gistTab {
 	width: 500px;
 	margin-left: auto;
@@ -50,7 +92,7 @@ th, td {
 	font-weight: bold;
 }
 .oscall {
-	color: red;
+	color: var(--oscall-color);
 	font-weight: bold;
 }
 .register {
@@ -58,7 +100,7 @@ th, td {
 	font-weight: bold;
 }
 .number {
-	color: orange;
+	color: var(--number-color);
 }
 .comment {
 	color: var(--comment-color);
@@ -66,4 +108,64 @@ th, td {
 .string {
 	color: var(--string-color);
 }
+.label {
+	color: var(--label-color);
+}
+.unknown {
+	color: var(--unknwon-color);
+}
 /* End LC3 Syntax Highlighting. */
+
+.theme-switch-container {
+	width: 61px;
+	padding-top: 5px;
+}
+    
+.theme-switch {
+  display: inline-block;
+  height: 23px;
+  position: relative;
+  width: 40px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 15px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 15px;
+}
+
+input:checked + .slider {
+  background-color: #2b2b2b;
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

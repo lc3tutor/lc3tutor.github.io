@@ -8,11 +8,11 @@ layout: post
 slug: basic-input-output
 permalink: /basic-input-output
 prevp: '/work-with-ascii'
-nextp: '/limit-user-input'
+nextp: '/branching'
 prereqs: Requires basic knowledge of the AND and NOT LC3 commands.
 ---
 
-This section introduces the OS Calls `GETC` for input and `OUT` and `PUTS` for output. The OS Calls are then demonstrated in an example program. This section on [Working with ASCII](/) is useful for the material for this section.
+This section introduces the OS Calls `GETC` for input and `OUT` and `PUTS` for output. The OS Calls are then demonstrated in an example program. This section on [Working with ASCII](/work-with-ascii) is useful for the material for this section.
 
 ## Basic Input
 

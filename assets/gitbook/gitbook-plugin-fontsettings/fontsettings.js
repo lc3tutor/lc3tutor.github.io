@@ -94,6 +94,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 
     // Change type of color theme
     function changeColorTheme(configName, e) {
+        console.log(configName);
         if (e && e instanceof Event) {
             e.preventDefault();
         }
@@ -110,6 +111,46 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         }
 
         // Set new color theme
+        var themeId = getThemeId(configName);
+        fontState.theme = themeId;
+        if (fontState.theme !== 0) {
+            $book.addClass('color-theme-'+fontState.theme);
+            if ($header.length !== 0) {
+                $header.addClass('color-theme-'+fontState.theme);
+            }
+        }
+
+        toggleLightDark(fontState.theme);
+
+        saveFontSettings();
+    }
+
+    // Change type of color theme using my code.
+    function changeLC3ColorTheme(e) {
+        console.log("DEBUG");
+        if (e && e instanceof Event) {
+            e.preventDefault();
+        }
+
+        var $book = gitbook.state.$book;
+        var $header = $('.book-body > .book-header');
+
+        // Remove currently applied color theme
+        if (fontState.theme !== 0) {
+            $book.removeClass('color-theme-'+fontState.theme);
+            if ($header.length !== 0) {
+                $header.removeClass('color-theme-'+fontState.theme);
+            }
+        }
+
+        // Set new color theme
+        let configName = "";
+        if(e.target.checked){
+            configName = "night";
+        }
+        else{
+            configName = "white";
+        }
         var themeId = getThemeId(configName);
         fontState.theme = themeId;
         if (fontState.theme !== 0) {
@@ -177,18 +218,18 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             family: configFamily,
             theme:  configTheme
         });
-        console.log(fontState);
+        //console.log(fontState);
         update();
     }
 
     function updateButtons() {
         // Remove existing fontsettings buttons
         if (!!BUTTON_ID) {
-            gitbook.toolbar.removeButton(BUTTON_ID);
+            //gitbook.toolbar.removeButton(BUTTON_ID);
         }
 
         // Create buttons in toolbar
-        BUTTON_ID = gitbook.toolbar.createButton({
+        /*BUTTON_ID = gitbook.toolbar.createButton({
             icon: 'fa fa-font',
             label: 'Font Settings',
             className: 'font-settings',
@@ -220,7 +261,12 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                     return theme;
                 })
             ]
-        });
+        });*/
+        let themeToggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        let themeChecked = false;
+        if(state.theme !== 0) themeChecked = true; 
+        themeToggleSwitch.checked = themeChecked;
+        themeToggleSwitch.addEventListener('change', changeLC3ColorTheme, false);
     }
 
     // Init configuration at start

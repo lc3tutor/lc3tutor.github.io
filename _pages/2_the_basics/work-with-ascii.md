@@ -15,6 +15,22 @@ This section discusses strings and characters. A string is a collection of chara
 
 ## ASCII Characters
 
-This [table](/ascii-table) list the ASCII values. 
+This [table](/ascii-table) list the ASCII values. Letters, numbers, and special characters have a decimal value. For example, `G` is x47 while `#` is x23.
+
+
+## Escape Characters
+
+newline \n
+horizontal tab \t
+backspace \b
+carriage return \r
+backslash \\
+double quote \"
+
+## Value to ASCII Conversion
+
+numbers and uppercase to lowercase
+
+## Strings
 
 To Be Continued.

@@ -57,9 +57,9 @@
             "subsections":[
               {
                 "title":"3.1. Basic Input / Output",
-                "link" :"/work-with-ascii",
-                "prev" :"/number-bases",
-                "next" :"/limit-user-input"
+                "link" :"/basic-input-output",
+                "prev" :"/work-with-ascii",
+                "next" :"/branching"
               }
             ]
         },
@@ -67,9 +67,15 @@
           "title":"4. Flow Control",
           "subsections":[
             {
+              "title":"4.1. Branching",
+              "link" :"/branching",
+              "prev" :"/basic-input-output",
+              "next" :"/limit-user-input"
+            },
+            {
               "title":"4.3. Limiting User Input",
               "link" :"/limit-user-input",
-              "prev" :"/basic-input-output",
+              "prev" :"/branching",
               "next" :"/value-to-binary-string"
             }
           ]

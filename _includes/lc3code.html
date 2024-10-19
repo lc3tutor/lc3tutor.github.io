@@ -1,0 +1,16 @@
+<div class="lc3code-container">
+  <div class="linenumber-gutter" id="{{site.codeurl}}{{include.filename}}_linenumber_gutter">
+    <div class="linenumber" id="{{site.codeurl}}{{include.filename}}_linenumber"></div>
+  </div>
+  <div class="lc3code-gutter" id="{{site.codeurl}}{{include.filename}}_code_gutter">
+    <div class="lc3code" id="{{site.codeurl}}{{include.filename}}_code"></div>
+  </div>
+  <script>
+  DecorateLC3("{{site.codeurl}}{{include.filename}}", false);
+  multiElementScroll(
+    document.getElementById("{{site.codeurl}}{{include.filename}}_code_gutter"),
+    document.getElementById("{{site.codeurl}}{{include.filename}}_linenumber_gutter")
+  )
+  </script>
+</div>
+<br>

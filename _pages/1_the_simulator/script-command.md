@@ -18,7 +18,7 @@ Below on the left is the user program code. On the right is the red ghost LC3 im
 {% include codesnip.html filename="ghost.asm" %}
 {% include codesnip.html filename="redghost.asm" %}
 
-To run this program, there are three files to assemble (if needed) and three objects to load. Instead of typing each command separately, the simulator allows the use of basic scripting. An example is below. The script is just a text file. Each line in the file is a command, that is just like what would be typed into the command line.
+To run this program, there are three files to assemble (if needed) and three objects to load. Instead of typing each command separately, the simulator allows the use of basic scripting. An example is below. The script is just a text file. Each line in the file is a command, just you would type into the command line.
 
 {% include codesnip.html filename="ghost.txt" %}
 
