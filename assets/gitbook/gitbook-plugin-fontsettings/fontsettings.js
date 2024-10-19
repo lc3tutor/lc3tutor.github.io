@@ -228,11 +228,11 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     function updateButtons() {
         // Remove existing fontsettings buttons
         if (!!BUTTON_ID) {
-            //gitbook.toolbar.removeButton(BUTTON_ID);
+            gitbook.toolbar.removeButton(BUTTON_ID);
         }
 
         // Create buttons in toolbar
-        /*BUTTON_ID = gitbook.toolbar.createButton({
+        BUTTON_ID = gitbook.toolbar.createButton({
             icon: 'fa fa-font',
             label: 'Font Settings',
             className: 'font-settings',
@@ -264,7 +264,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                     return theme;
                 })
             ]
-        });*/
+        });
         let themeToggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
         themeToggleSwitch.addEventListener('change', changeLC3ColorTheme, false);
     }
