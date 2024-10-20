@@ -65,7 +65,6 @@ a.page-link {
     text-align: left;
     border: none;
     outline: none;
-    transition: 0.4s;
     list-style-type: none;
     font-weight: 600;
     font-size: 14px;
@@ -84,7 +83,7 @@ a.page-link {
 }
 
 .active, .accordion:hover, .accordion-page:hover, .accordion-page:active {
-    background-color: #252737;
+    background-color: var(--accordian-active-color);
     border: 1px solid #1c1f2b;
 }
 

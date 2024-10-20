@@ -16,7 +16,12 @@
     --bg-nav-color-dark  : #2d3143;
     --bg-nav-color       : var(--bg-nav-color-light);
 
+    --accordian-active-color-light: #e6e6e6;
+    --accordian-active-color-dark : #252737;
+    --accordian-active-color      : var(--accordian-active-color-light);
+
     /* Begin LC3 Code Snip Colors. */
+
     --opcode-color-light : #5399ca;
     --opcode-color-dark  : #5399ca;
     --opcode-color       : var(--opcode-color-light);

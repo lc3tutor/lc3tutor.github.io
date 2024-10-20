@@ -1,3 +1,5 @@
+var changeLC3ColorTheme_p;
+
 require(['gitbook', 'jquery'], function(gitbook, $) {
     // Configuration
     var MAX_SIZE       = 4,
@@ -94,7 +96,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 
     // Change type of color theme
     function changeColorTheme(configName, e) {
-        console.log(configName);
+        console.log(e);
         if (e && e instanceof Event) {
             e.preventDefault();
         }
@@ -127,7 +129,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 
     // Change type of color theme using my code.
     function changeLC3ColorTheme(e) {
-        console.log("DEBUG");
+        console.log(e);
         if (e && e instanceof Event) {
             e.preventDefault();
         }
@@ -265,8 +267,9 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                 })
             ]
         });
-        let themeToggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-        themeToggleSwitch.addEventListener('change', changeLC3ColorTheme, false);
+        // Global var is required to keep slider functioning after page change.
+        changeLC3ColorTheme_p = changeLC3ColorTheme;
+        document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('change', changeLC3ColorTheme_p, false);
     }
 
     // Init configuration at start
@@ -284,6 +287,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         enlargeFontSize: enlargeFontSize,
         reduceFontSize:  reduceFontSize,
         setTheme:        changeColorTheme,
+        setLC3Theme:     changeLC3ColorTheme,
         setFamily:       changeFontFamily,
         getThemes:       getThemes,
         setThemes:       setThemes,

@@ -38,36 +38,12 @@
 
             <li class="divider"></li>
 
-            <!--{% for navi in site.page_navi %}
-			{% if navi.title == page.title %}
-			<li class="chapter active expanded" data-level="1.1" data-path="{{navi.link}}"> 
-				<a href="{{navi.link}}" onclick="pageScrollToTop(this)">
-					{{navi.title}}
-				</a>
-            </li>
-			{% else %}
-			<li class="chapter expanded" data-level="1.1" data-path="{{navi.link}}"> 
-				<a href="{{navi.link}}" onclick="pageScrollToTop(this)">
-					{{navi.title}}
-				</a>
-            </li>
-			{% endif %}
-			{% endfor %}-->
-
             <!-- Accordion navigation. -->
             {% for section in site.data.navi.sections %}
             <li class="accordion">{{ section.title }}</li>
             <div class="panel">
                 <ul>
                 {% for subsection in section.subsections %}
-                <!--<li class="accordion accordion-inner">
-                    <a class="navi-link" href="/" onclick="pageScrollToTop(this)">
-                        {{ subsection.title }}
-                    </a>
-                </li>
-                <div class="panel">
-                    <p class="accordion accordion-inner-inner">Content</p>
-                </div>-->
                 {% if subsection.title == page.title %}
                 <li class="chapter active expanded" data-level="1.1" data-path="{{subsection.link}}">
                 {% else %}
@@ -82,7 +58,6 @@
             </div>
             {% endfor %}
         </ul>
-
     </nav>
     <script>setUpAccordionMenu();</script>
 </div>
