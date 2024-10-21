@@ -17,6 +17,7 @@ div.linenumber-gutter {
 	text-align: right;
     width: 7%;
 	background-color: var(--linenumber-bgc);
+	padding-top: 5px;
 }
 
 div.lc3code-gutter {
@@ -25,6 +26,7 @@ div.lc3code-gutter {
 	overflow-y: scroll;
 	padding-left: 2px;
 	width: 93%;
+	padding-top: 5px;
 }
 
 div.lc3code, div.linenumber {

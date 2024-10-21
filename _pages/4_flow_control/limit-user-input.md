@@ -12,7 +12,7 @@ nextp: '/value-to-binary-string'
 prereqs: Requires knowledge on the branch instruction, BRnzp.
 ---
 
-Review these sections: [branching](/) and [memory load / store](/).
+Review these sections: [branching](/branching) and [memory load / store](/).
 
 This section will build upon the uppercase to lowercase conversion example in [basic input / output](/basic-input-output) to show how a user's input can be restricted to satisfy the need of the program. The concepts introduced here can be used to approach many different problems.
 
@@ -28,7 +28,7 @@ Below is a user program that does what we described above.
 
 ## Example Program
 
-{% include codesnip.html filename="limituserinput.asm" %}
+{% include lc3code.html filename="limituserinput.asm" %}
 
 Expected output with input `R`:
 ```text
