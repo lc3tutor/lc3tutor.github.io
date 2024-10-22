@@ -8,6 +8,7 @@ layout: post
 slug: ascii-table
 permalink: /ascii-table
 prevp: '/2sc-base-conversion'
+nextp: '/conversion-table'
 ---
 
 {% include tables/ascii.html %}

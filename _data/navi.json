@@ -6,7 +6,7 @@
             {
               "title":"1.1. The PennSim GUI",
               "link" :"/the-pennsim-gui",
-              "prev" : "/",
+              "prev" : "/conversion-table",
               "next" : "/basic-commands"
             },
             {
@@ -110,7 +110,13 @@
                   "title":"B.3. ASCII Table",
                   "link" :"/ascii-table",
                   "prev" : "/2sc-base-conversion",
-                  "next" : "/"
+                  "next" : "/conversion-table"
+                },
+                {
+                  "title":"B.4. Conversion Table",
+                  "link" :"/conversion-table",
+                  "prev" : "/ascii-table",
+                  "next" : "/the-pennsim-gui"
                 }
             ]
         }

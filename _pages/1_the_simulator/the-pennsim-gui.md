@@ -7,7 +7,7 @@ category: pages
 layout: post
 slug: the-pennsim-gui
 permalink: /the-pennsim-gui
-prevp: '/'
+prevp: '/conversion-table'
 nextp: '/basic-commands'
 ---
 

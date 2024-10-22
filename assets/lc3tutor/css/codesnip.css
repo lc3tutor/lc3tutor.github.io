@@ -16,6 +16,7 @@ div.linenumber-gutter {
 	padding-right: 10px;
 	text-align: right;
     width: 7%;
+	min-width: 50px;
 	background-color: var(--linenumber-bgc);
 	padding-top: 5px;
 }
