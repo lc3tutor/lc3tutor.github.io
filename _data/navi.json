@@ -73,7 +73,7 @@
               "next" :"/limit-user-input"
             },
             {
-              "title":"4.3. Limiting User Input",
+              "title":"4.2. Limiting User Input",
               "link" :"/limit-user-input",
               "prev" :"/branching",
               "next" :"/value-to-binary-string"

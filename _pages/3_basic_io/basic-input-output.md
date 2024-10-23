@@ -52,7 +52,7 @@ The program below takes in a character from the user and outputs the lower case 
 5. The output prompt is printed to the console.
 6. The converted input is printed to the console.
 
-{% include codesnip.html filename="basicinputoutput.asm" %}
+{% include lc3code.html filename="basicinputoutput.asm" %}
 
 Expected output with input `R`:
 ```text

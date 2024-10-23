@@ -15,8 +15,8 @@ This article uses the ghost user program in the [git repository](https://github.
 
 Below on the left is the user program code. On the right is the red ghost LC3 image code. The red ghost code was generated using the LC3 [Image Generator tool](/lc3-image-generator).
 
-{% include codesnip.html filename="ghost.asm" %}
-{% include codesnip.html filename="redghost.asm" %}
+{% include lc3code.html filename="ghost.asm" %}
+{% include lc3code.html filename="redghost.asm" %}
 
 To run this program, there are three files to assemble (if needed) and three objects to load. Instead of typing each command separately, the simulator allows the use of basic scripting. An example is below. The script is just a text file. Each line in the file is a command, just you would type into the command line.
 
