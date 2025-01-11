@@ -30,6 +30,7 @@
             <div class="body-inner">
                 {%- include body.html -%}
 
+                {% assign subsection_object = site.data.navigation.subsections[page.title] %}
                 <a href="{{subsection_object.prev}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{subsection_object.prev}}">
                     <i class="fa fa-angle-left"></i>
                 </a>

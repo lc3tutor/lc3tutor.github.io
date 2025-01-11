@@ -13,7 +13,7 @@
         <div id="book-search-results">
             <div class="search-noresults">
                 <section class="normal markdown-section">
-                    {% assign subsection_object = site.data.navigation.subsections | find_value: page.title %}
+                    {% assign subsection_object = site.data.navigation.subsections[page.title] %}
                     {% if page.title %}
                         <h1 id="{{ page.id }}">{{ subsection_object.title | escape }}</h1>
                     {% else %}
