@@ -1,55 +1,63 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 
 div.lc3code-container {
-	display: flex;
-	width: 95%;
-	margin: auto;
-	background-color: var(--lc3code-bgc);
-	border: 1px solid #000000;
-	border-radius: 5px;
+    display: flex;
+    width: 95%;
+    margin: auto;
+    background-color: var(--lc3code-bgc);
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
 div.linenumber-gutter {
-	max-height: 400px;
-	overflow-y: hidden;
-	overflow-x: hidden;
-	padding-right: 10px;
-	text-align: right;
+    max-height: 400px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    text-align: right;
     width: 7%;
-	min-width: 50px;
-	background-color: var(--linenumber-bgc);
-	padding-top: 5px;
+    min-width: 50px;
+    background-color: var(--linenumber-bgc);
 }
 
 div.lc3code-gutter {
-	max-height: 400px;
-	overflow-x: scroll;
-	overflow-y: scroll;
-	padding-left: 2px;
-	width: 93%;
-	padding-top: 5px;
+    max-height: 400px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding-left: 2px;
+    width: 93%;
+    padding-top: 5px;
 }
 
-div.lc3code, div.linenumber {
+div.lc3code {
     font-family: 'Courier New';
     font-size: 1em !important;
     line-height: 1;
-	white-space: nowrap;
+    white-space: nowrap;
+}
+
+div.linenumber {
+    font-family: 'Courier New';
+    font-size: 1em !important;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .lc3code{
-	margin-left: auto;
-	margin-right: auto;
-	font-family: 'Courier New';
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Courier New';
     font-size: 1em !important;
     line-height: 1;
 }
 
 .gistTab {
-	width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	font-family: 'Courier New';
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Courier New';
     font-size: 1em !important;
     line-height: 1;
 }
@@ -59,8 +67,8 @@ div.lc3code, div.linenumber {
 }
 
 th, td {
-	border-collapse: collapse;
-	white-space: pre;
+    border-collapse: collapse;
+    white-space: pre;
 }
 .line-num {
     background-color: #faf5f5;
@@ -72,50 +80,50 @@ th, td {
 }
 
 .gistwrapper {
-	margin: auto;
-	width: 95%;
-	max-height: 400px;
-	border: 1px solid #000000;
-	border-radius: 5px;
-	overflow: hidden;
+    margin: auto;
+    width: 95%;
+    max-height: 400px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    overflow: hidden;
 }
 .gist-content {
-	width: 100%;
-	max-height: 400px;
-	overflow: auto;
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
 }
 
 /* LC3 Syntax Highlighting. */
 .opcode {
-	color: var(--opcode-color);
-	font-weight: bold;
+    color: var(--opcode-color);
+    font-weight: bold;
 }
 .directive {
-	color: var(--directive-color);
-	font-weight: bold;
+    color: var(--directive-color);
+    font-weight: bold;
 }
 .oscall {
-	color: var(--oscall-color);
-	font-weight: bold;
+    color: var(--oscall-color);
+    font-weight: bold;
 }
 .register {
-	color: var(--register-color);
-	font-weight: bold;
+    color: var(--register-color);
+    font-weight: bold;
 }
 .number {
-	color: var(--number-color);
+    color: var(--number-color);
 }
 .comment {
-	color: var(--comment-color);
+    color: var(--comment-color);
 }
 .string {
-	color: var(--string-color);
+    color: var(--string-color);
 }
 .label {
-	color: var(--label-color);
+    color: var(--label-color);
 }
 .unknown {
-	color: var(--unknwon-color);
+    color: var(--unknwon-color);
 }
 /* End LC3 Syntax Highlighting. */
 

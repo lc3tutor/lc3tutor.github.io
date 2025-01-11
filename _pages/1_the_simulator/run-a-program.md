@@ -1,5 +1,5 @@
 ---
-title: 1.3. Run a Program
+title: Run a Program
 description: How to load, assemble and run an LC3 program. This section shows how to run a hello world program using a basic LC3 operating system.
 author: lc3tutor
 date: 2024-03-01
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: run-a-program
 permalink: /run-a-program
-prevp: '/basic-commands'
-nextp: '/script-command'
 ---
 
 This section goes over how to run a user created LC3 program.

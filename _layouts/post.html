@@ -1,66 +1,53 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        {% include head.html %}
-    </head>
-    <body>
-        <div class="book">
+<head>
+    {% include head.html %}
+</head>
+<body>
+    <div class="book">
+        {%- include lc3navigation.html -%}
 
-            {%- include lc3navigation.html -%}
-
-            <div class="book-body">
-                <div class="book-header" role="navigation">
-                    <!-- Title -->
-                    <h1>
-                        <i class="fa fa-circle-o-notch fa-spin"></i>
-                        {% if page.title %}
-                            <a href="." >{{ page.title | escape }}</a>
-                        {% else %}
-                            <a href="." >{{ site.title | escape }}</a>
-                        {% endif %}
-                    </h1>
-                    <div class="theme-switch-container">
-                        <label class="theme-switch" for="checkbox">
-                            <input type="checkbox" id="checkbox" />
-                            <div class="slider round"></div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="body-inner">
-                    {%- include body.html -%}
-
-                    {% if page.prevp %}
-                        <a href="{{page.prevp}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{page.prevp}}">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
+        <div class="book-body">
+            <div class="book-header" role="navigation">
+                <!-- Title -->
+                <h1>
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                    {% assign subsection_object = site.data.navigation.subsections | find_value: page.title %}
+                    {% if page.title %}
+                        <a href="." >{{ subsection_object.title | escape }}</a>
                     {% else %}
-                        <a href="{{site.baseurl}}/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{site.title}}">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
+                        <a href="." >{{ subsection_object.title | escape }}</a>
                     {% endif %}
-
-                    {% if page.nextp %}
-                        <a href="{{page.nextp}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{page.nextp}}">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-					{% else %}
-						<a href="{{site.baseurl}}/" class="navigation navigation-next navigation-unique" aria-label="Next page: {{site.title}}">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    {% endif %}
+                </h1>
+                <div class="theme-switch-container">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
                 </div>
             </div>
 
-            <script>
-            var gitbook = gitbook || [];
-            gitbook.push(function() {
-                gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
-            });
-            </script>
+            <div class="body-inner">
+                {%- include body.html -%}
+
+                <a href="{{subsection_object.prev}}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{subsection_object.prev}}">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a href="{{subsection_object.next}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{subsection_object.next}}">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
         </div>
 
-        {%- include footer.html -%}
+        <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
+        });
+        </script>
+    </div>
 
-    </body>
+    {%- include footer.html -%}
+
+</body>
 </html>

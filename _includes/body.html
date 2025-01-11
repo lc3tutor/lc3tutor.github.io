@@ -13,23 +13,20 @@
         <div id="book-search-results">
             <div class="search-noresults">
                 <section class="normal markdown-section">
+                    {% assign subsection_object = site.data.navigation.subsections | find_value: page.title %}
                     {% if page.title %}
-                        <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
+                        <h1 id="{{ page.id }}">{{ subsection_object.title | escape }}</h1>
                     {% else %}
                         <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
                     {% endif %}
 
                     {{ content }}
-
-                    {%- if jekyll.environment != 'dev' and site.disqushandler -%}
-                        {%- include disqus.html -%}
-                    {%- endif -%}
                 </section>
                 <br><hr>
 				<div>
                     <table style="width: 100%">
                         <tr>
-				            <th style="text-align:left"><p>&copy; 2024 LC3Tutor </p></th>
+				            <th style="text-align:left"><p>&copy; 2024-2025 LC3Tutor </p></th>
                             <th style="text-align:right"><a class="page-link" href="/privacy">Privacy</a></th>
                         </tr>
                     </table>

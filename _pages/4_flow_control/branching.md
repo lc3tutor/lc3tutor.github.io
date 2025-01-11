@@ -1,5 +1,5 @@
 ---
-title: 4.1. Branching
+title: Branching
 description: What LC-3 branching is and how to relate branch flags with inequalities.
 author: lc3tutor
 date: 2024-10-16
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: branching
 permalink: branching
-prevp: '/basic-input-output'
-nextp: '/limit-user-input'
 prereqs: Requires knowledge of basic LC-3.
 ---
 

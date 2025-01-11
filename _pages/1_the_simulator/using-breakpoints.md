@@ -1,5 +1,5 @@
 ---
-title: 1.5. *Using Breakpoints
+title: Using Breakpoints
 description: How to use breakpoints to pause execution of a simulated LC3 program and how to leverage labels for quick debugging.
 author: lc3tutor
 date: 2024-05-19
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: using-breakpoints
 permalink: /using-breakpoints
-prevp: '/script-command'
-nextp: '/number-bases'
 ---
 
 *This section is not required but will be useful as the LC3 code becomes more complex.

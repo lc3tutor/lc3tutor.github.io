@@ -39,18 +39,19 @@
             <li class="divider"></li>
 
             <!-- Accordion navigation. -->
-            {% for section in site.data.navi.sections %}
-            <li class="accordion">{{ section.title }}</li>
+            {% for section in site.data.navigation.layout %}
+            <li class="accordion">{{ site.data.navigation.sections | find_value: section[0] }}</li>
             <div class="panel">
                 <ul>
-                {% for subsection in section.subsections %}
-                {% if subsection.title == page.title %}
-                <li class="chapter active expanded" data-level="1.1" data-path="{{subsection.link}}">
+                {% for subsection in section[1] %}
+                {% assign subsection_object = site.data.navigation.subsections | find_value: subsection %}
+                {% if subsection == page.title %}
+                <li class="chapter active expanded" data-level="1.1" data-path="{{ subsection_object.link }}">
                 {% else %}
-                <li class="chapter expanded" data-level="1.1" data-path="{{subsection.link}}">
+                <li class="chapter expanded" data-level="1.1" data-path="{{ subsection_object.link }}">
                 {% endif %}
-                <a class="accordion-page" href="{{ subsection.link }}" onclick="pageScrollToTop(this)">
-                    {{ subsection.title }}
+                <a class="accordion-page" href="{{ subsection_object.link }}" onclick="pageScrollToTop(this)">
+                    {{ subsection_object.title }}
                 </a>
                 </li>
                 {% endfor %}

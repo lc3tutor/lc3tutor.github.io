@@ -1,6 +1,5 @@
 ---
 layout: home
-title: LC3Tutor
 date: 2024-02-09
 description: Information to help get started building LC3 programs. How to use the PennSim LC3 simulator to run and debug LC3 code. Many LC3 code examples are provided in a linked git repository.
 permalink: /

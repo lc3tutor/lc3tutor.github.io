@@ -1,5 +1,5 @@
 ---
-title: 4.2. Limiting User Input
+title: Limiting User Input
 description: How to use branching in LC3 to control what input the user can provide to the program.
 author: lc3tutor
 date: 2024-08-14
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: limit-user-input
 permalink: /limit-user-input
-prevp: '/branching'
-nextp: '/value-to-binary-string'
 prereqs: Requires knowledge on the branch instruction, BRnzp.
 ---
 

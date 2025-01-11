@@ -1,58 +1,54 @@
 <!DOCTYPE HTML>
 <html lang="en" >
-    <head>
+<head>
 
-        {%- include head.html -%}
+    {%- include head.html -%}
 
-        {% assign reversed_posts = site.posts | reverse %}
+    {% assign reversed_posts = site.posts | reverse %}
 
-        {% if reversed_posts %}
-            <link rel="next" href="{{site.baseurl}}{{reversed_posts.first.url}}" />
-        {% endif %}
-    </head>
-    <body>
-        <div class="book">
+    {% if reversed_posts %}
+        <link rel="next" href="{{site.baseurl}}{{reversed_posts.first.url}}" />
+    {% endif %}
+</head>
+<body>
+    <div class="book">
 
-            {%- include toc-date.html -%}
+        {%- include toc-date.html -%}
 
-            <div class="book-body">
-                <div class="book-header" role="navigation">
-                    <!-- Title -->
-                    <h1>
-                        <i class="fa fa-circle-o-notch fa-spin"></i>
-                        {% if page.title %}
-                            <a href="." >{{ page.title | escape }}</a>
-                        {% else %}
-                            <a href="." >{{ site.title | escape }}</a>
-                        {% endif %}
-                    </h1>
-                    <div class="theme-switch-container">
-                        <label class="theme-switch" for="checkbox">
-                            <input type="checkbox" id="checkbox" />
-                            <div class="slider round"></div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="body-inner">
-                    {%- include body.html -%}
-
-                    <a href="{{page.nextp}}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{page.nextp}}">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
+        <div class="book-body">
+            <div class="book-header" role="navigation">
+                <!-- Title -->
+                <h1>
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                    {% if page.title %}
+                        <a href="." >{{ page.title | escape }}</a>
+                    {% else %}
+                        <a href="." >{{ site.title | escape }}</a>
+                    {% endif %}
+                </h1>
+                <div class="theme-switch-container">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
                 </div>
             </div>
 
-
-            <script>
-            var gitbook = gitbook || [];
-            gitbook.push(function() {
-                gitbook.page.hasChanged({%- include metadata-home.json.tpl -%});
-            });
-            </script>
+            <div class="body-inner">
+                {%- include body.html -%}
+            </div>
         </div>
 
-        {%- include footer.html -%}
 
-    </body>
+        <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({%- include metadata-home.json.tpl -%});
+        });
+        </script>
+    </div>
+
+    {%- include footer.html -%}
+
+</body>
 </html>

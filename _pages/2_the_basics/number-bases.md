@@ -1,5 +1,5 @@
 ---
-title: 2.1. Number Bases
+title: Number Bases
 description: Before working with assembly code, knowledge about the 2, 10, and 16 number bases is required. This article reviews binary, demcimal, and hexadecimal numbers.
 author: lc3tutor
 date: 2024-02-29
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: number-bases
 permalink: /number-bases
-prevp: '/using-breakpoints'
-nextp: '/work-with-ascii'
 ---
 
 In this section we will discuss number bases and because numbers of different bases can look alike, when the context is not clear the base will be denoted with a: **#** for decimal, **b** for binary, and **x** for hexadecimal. For example the decimal value 229 would be denoted as #229, b11100101, and xE5 respectively.

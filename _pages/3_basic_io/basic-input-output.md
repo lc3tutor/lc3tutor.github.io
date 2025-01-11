@@ -1,5 +1,5 @@
 ---
-title: 3.1. Basic Input / Output
+title: Basic Input / Output
 description: How to utilize the LC3 GETC (TRAP x20) and OUT (TRAP x21) to get user input and to echo the input back to the user.
 author: lc3tutor
 date: 2024-05-15
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: basic-input-output
 permalink: /basic-input-output
-prevp: '/work-with-ascii'
-nextp: '/branching'
 prereqs: Requires basic knowledge of the AND and NOT LC3 commands.
 ---
 

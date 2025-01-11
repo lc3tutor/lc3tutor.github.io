@@ -1,5 +1,5 @@
 ---
-title: 1.1. The PennSim GUI
+title: The PennSim GUI
 description: A quick run down of the PennSim GUI that will be needed to build, simulate, and debug LC3 code.
 author: lc3tutor
 date: 2024-02-29 
@@ -7,8 +7,6 @@ category: pages
 layout: post
 slug: the-pennsim-gui
 permalink: /the-pennsim-gui
-prevp: '/conversion-table'
-nextp: '/basic-commands'
 ---
 
 These tutorials will be using the PennSim LC3 simulator from the University of Pennsylvania.
