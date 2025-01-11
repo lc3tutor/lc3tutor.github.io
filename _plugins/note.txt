@@ -1,0 +1,1 @@
+- You cannot run custom Ruby plugins on GitHub pages. However, these will run locally if you want to generate the static content locally then push to the repository.

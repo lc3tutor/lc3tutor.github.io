@@ -40,11 +40,13 @@
 
             <!-- Accordion navigation. -->
             {% for section in site.data.navigation.layout %}
-            <li class="accordion">{{ site.data.navigation.sections | find_value: section[0] }}</li>
+            {% comment %} Cannot use section[0] directly as a dictionary key. {% endcomment %}
+            {% assign section_raw_title = section[0] %}
+            <li class="accordion">{{ site.data.navigation.sections[section_raw_title] }}</li>
             <div class="panel">
                 <ul>
                 {% for subsection in section[1] %}
-                {% assign subsection_object = site.data.navigation.subsections | find_value: subsection %}
+                {% assign subsection_object = site.data.navigation.subsections[subsection] %}
                 {% if subsection == page.title %}
                 <li class="chapter active expanded" data-level="1.1" data-path="{{ subsection_object.link }}">
                 {% else %}

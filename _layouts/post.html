@@ -12,7 +12,7 @@
                 <!-- Title -->
                 <h1>
                     <i class="fa fa-circle-o-notch fa-spin"></i>
-                    {% assign subsection_object = site.data.navigation.subsections | find_value: page.title %}
+                    {% assign subsection_object = site.data.navigation.subsections[page.title] %}
                     {% if page.title %}
                         <a href="." >{{ subsection_object.title | escape }}</a>
                     {% else %}
