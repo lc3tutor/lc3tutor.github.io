@@ -28,7 +28,8 @@
             "Conversion Table"
         ],
         "Examples": [
-            "Draw Red Box"
+            "Draw Red Box",
+            "Draw Star Pyramid"
         ]
     },
     "sections": {
@@ -45,7 +46,7 @@
             "parent": "The Simulator",
             "title": "1.1. The PennSim GUI",
             "link": "/the-pennsim-gui",
-            "prev": "/draw-red-box",
+            "prev": "/draw-star-pyramid",
             "next": "/basic-commands"
         },
         "Basic Commands": {
@@ -151,6 +152,13 @@
             "title": "C.1. Draw Red Box",
             "link": "/draw-red-box",
             "prev": "/conversion-table",
+            "next": "/draw-star-pyramid"
+        },
+        "Draw Star Pyramid": {
+            "parent": "Examples",
+            "title": "C.2. Draw Star Pyramid",
+            "link": "/draw-star-pyramid",
+            "prev": "/draw-red-box",
             "next": "/the-pennsim-gui"
         }
     }
