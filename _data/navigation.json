@@ -9,6 +9,7 @@
         ],
         "The LC3 Basics": [
             "Number Bases",
+            "Negative Values",
             "IEEE Floating Point",
             "Working With ASCII"
         ],
@@ -83,18 +84,25 @@
             "title": "2.1. Number Bases",
             "link": "/number-bases",
             "prev": "/using-breakpoints",
+            "next": "/negative-values"
+        },
+        "Negative Values": {
+            "parent": "The LC3 Basics",
+            "title": "2.2. Negative Values",
+            "link": "/negative-values",
+            "prev": "/number-bases",
             "next": "/ieee-floating-point"
         },
         "IEEE Floating Point": {
             "parent": "The LC3 Basics",
-            "title": "2.2. IEEE Floating Point",
+            "title": "2.3. IEEE Floating Point",
             "link": "/ieee-floating-point",
-            "prev": "/number-bases",
+            "prev": "/negative-values",
             "next": "/work-with-ascii"
         },
         "Working With ASCII": {
             "parent": "The LC3 Basics",
-            "title": "2.3. Working With ASCII",
+            "title": "2.4. Working With ASCII",
             "link": "/work-with-ascii",
             "prev": "/ieee-floating-point",
             "next": "/basic-input-output"
