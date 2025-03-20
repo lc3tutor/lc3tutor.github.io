@@ -24,6 +24,12 @@ th.asciitabbreak, td.asciitabbreak {
     padding: 0px 1px 0px 1px !important;
 }
 </style>
+
+<p>Input a string below to see the ascii equivalent. Supported escaped characters are: \n, \r, \t, \", \', \b, \\\\, \0.<p>
+<input id="asciiStrInput" type="text" value="" oninput="ConvertAsciiStrToCode(event)">
+<div id="asciiStrOutput">Result: </div>
+<br>
+
 <div class="asciitab">
 <table class="asciitab">
     <tbody>
