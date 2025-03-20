@@ -1,10 +1,13 @@
 const ASCII_STR_OUTPUT_ID = "asciiStrOutput";
 
 function ConvertAsciiStrToCode(event) {
+    let input = event.target.value
+        .replace(/[\u2018\u2019]/g, "'") // Replace smart single quotes with regular single quotes
+        .replace(/[\u201C\u201D]/g, '"'); // Replace smart double quotes with regular double quotes
     let escapes = {"\\n": "x0A", "\\r": "x0D", "\\t": "x09", "\\\"": "x22", "\\'": "x27", "\\b": "x08", "\\\\": "x5C", "\\0": "x00"};
     let regex = /(\\[\\'\"bnrt0])|(\\[^\\'\"bnrt0]?)|([\"'])|([^\\]+)/g;
 
-    let matches = event.target.value.matchAll(regex);
+    let matches = input.matchAll(regex);
     let outStr = undefined;
     let outCode = [];
     let invalid = false;
