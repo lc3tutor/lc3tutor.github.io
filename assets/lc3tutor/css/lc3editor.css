@@ -1,0 +1,54 @@
+
+.tab {
+    display: none;
+    min-width: max-content;
+    white-space: pre-wrap;
+    font-family: monospace;
+    line-height: 1.4;
+}
+.tab.active {
+    display: block;
+}
+.tab-buttons {
+    display: flex;
+    cursor: pointer;
+}
+.tab-buttons div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+.tab-button.active {
+    background-color: #ccc;
+}
+
+#asmeditor {
+    padding-top: 40px; /* Adjust the value as needed */
+}
+.tab-content {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 729px;
+}
+
+/* LC3 Editor grid */
+.lc3editor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 10px; /* Space between columns */
+}
+
+.lc3editor, .output {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* File info grid */
+.file-info-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: center;
+    gap: 10px;
+}

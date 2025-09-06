@@ -1,0 +1,99 @@
+---
+title: LC3 Editor and Emulator
+description: LC3 Editor.
+author: lc3tutor
+date: 2025-09-04
+category: pages
+layout: raw
+slug: lc3tee
+permalink: /lc3tee
+---
+
+<!DOCTYPE html>
+<html lang="en">
+      
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        LC3Tutor Editor and Emulator
+    </title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/lc3tutor/icon/favicon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="assets/lc3tutor/css/lc3editor.css">
+{% if site.tracker -%}
+    <!-- trackers -->
+    {%- if site.tracker.application_insights -%}
+        <!-- application insights -->
+        {%- include application-insights.html -%}
+    {%- endif -%}
+{%- endif %}
+</head>
+
+<body>
+    <h1 style="text-align: center;"><a href="/" target="_blank" style="text-decoration: none;">LC3Tutor.com</a></h1>
+    <h3 style="text-align: center;">Report bugs or leave feedback to thelc3tutor@gmail.com</h3>
+
+    <!-- Start LC3 Editor -->
+    <h2 style="text-align: center;">LC3 Editor v0.0.1</h2>
+    <div id="lc3parser">
+        <input type="file" id="fileInput" accept=".asm" style="display: none;">
+        <button id="editorOpenBtn">Open</button>
+        <button id="editorExportBtn">Export</button>
+        <button id="editorLoadBtn">Load</button>
+        <button id="saveBtn">Save*</button>
+        <button id="editorAssembleBtn">Assemble</button>
+        <button onclick="window.open('/editor-how-to','_blank')">How To Use</button>
+        <p style="display:inline;padding-right: 5px">Filename:</p><input type="text" id="fname" name="fname">
+        <select id="fileSelect"></select>
+        <div>
+            <div id="lc3editor" class="lc3editor-container">
+                <div id="asmeditor"></div>
+                <div id="output">
+                    <div class="tab-buttons">
+                        <div class="tab-button active" data-tab="tab1">lst</div>
+                        <div class="tab-button" data-tab="tab2">sym</div>
+                        <div class="tab-button" data-tab="tab3">bin</div>
+                        <div class="tab-button" data-tab="tab4">hex</div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab active" id="tab1"></div>
+                        <div class="tab" id="tab2"></div>
+                        <div class="tab" id="tab3"></div>
+                        <div class="tab" id="tab4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2 style="text-align: center;">File Info</h2>
+    <div class="file-info-container">
+        <div>
+            <input id="fileCheckBox1" type="checkbox" name="fileCheckBox1" value="Option 1">
+            <label id="fileLabel1" for="fileCheckBox1"> Option 1</label>
+        </div>
+        <div>
+            <input id="fileCheckBox2" type="checkbox" name="fileCheckBox2" value="Option 2">
+            <label id="fileLabel2" for="fileCheckBox2"> Option 2</label>
+        </div>
+        <div>
+            <input id="fileCheckBox3" type="checkbox" name="fileCheckBox3" value="Option 3">
+            <label id="fileLabel3" for="fileCheckBox3"> Option 3</label>
+        </div>
+        <div>
+            <input id="fileCheckBox4" type="checkbox" name="fileCheckBox4" value="Option 4">
+            <label id="fileLabel4" for="fileCheckBox4"> Option 4</label>
+        </div>
+    </div>
+    <!-- End LC3 Editor -->
+
+    <!-- External Javascript Dependencies -->
+    <!-- This Javascript must be included first. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- LC3 Emulator & Editor Javascript -->
+    <script src="assets/lc3tutor/js/lc3editor.min.js"></script>
+</body>
+</html>

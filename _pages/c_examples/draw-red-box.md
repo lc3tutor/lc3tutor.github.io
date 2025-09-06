@@ -17,13 +17,13 @@ This example makes use of the graphics display, memory operations, and flow cont
 
 ## Usage
 
-The example and simulator can be found in this [repository](https://github.com/lc3tutor/lc3code/tree/main). The `scripts/redbox.txt` file contains the commands needed to run the program. You can run the script directly with the [script command](/script-command) from the simulator using `script scripts/redbox.txt`.
+The example and along with the simulator can be found in this [repository](https://github.com/lc3tutor/lc3code/tree/main). The `scripts/redbox.txt` file contains the commands needed to run the program. You can run the script directly with the [script command](/script-command) from the simulator using `script scripts/redbox.txt`.
 
 <img src="{{ site.imageurl }}C/redbox.png" class="center_img">
 
 ## Walkthrough
 
-When drawing on the graphics display, you need to decide the image's position, its size, and its contents. You pick a point to reference the image too and then draw around that point. In the case of the red box, its top left corner is used. The rectangle's size is its width and height. Its width is determined by how many pixels are in a row and its height how many pixels are in a column. The content of the image is just the color red, but we could make it more complex. The image could be a complex, such as a pig with a transparent background.
+When drawing on the graphics display, you need to decide the image's position, its size, and its contents. You pick a point to reference the image too and then draw around that point. In the case of the red box, its top left corner is used. The rectangle's size is its width and height. Its width is determined by how many pixels are in a row and its height how many pixels are in a column. The content of the image is just the color red, but we could make it more complex, such as a pig with a transparent background.
 
 The values used to determine these dimensions are stored in memory using `.FILL` on lines 29-33. We have the following values listed below:
 - `GD_START` set to `xDDB0` is the pixel location of the top left corner of the rectangle. Remember that the graphics display is controled with memory locations `xC000` to `xFDFF`.

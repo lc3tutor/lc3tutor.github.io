@@ -60,6 +60,6 @@ Lines 51-57 conclude the outer loop. Here we check if we are done printing the p
 
 ### Summary
 
-The pyramid is defined by the number of stars in the base level and the number of levels. These are determined by the user input. There are $$input + 1$$ levels and &&2 * input + 1$$ stars in the base level. If the user inputs 3, then the top level, level 3 has 1 star, the base level, level 0, has 7 stars, and so on for the inbetween levels.
+The pyramid is defined by the number of stars in the base level and the number of levels. These are determined by the user input. There are $$input + 1$$ levels and $$2 * input + 1$$ stars in the base level. If the user inputs 3, then the top level, level 3 has 1 star, the base level, level 0, has 7 stars, and so on for the inbetween levels.
 
 There are three loops. The outer loop is responsible for each level of the pyramid. In each outer loop there are two inner loops. One responsible for drawing spaces, then a loop for drawing the stars. Using the star counter and level counter in `R2` and `R3` we can calculate the needed number of spaces and stars for each of the inner loops for each outer loop iteration that ultimately gives us an upright and straight pyramid.
