@@ -15,19 +15,15 @@ permalink: /lc3tee
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+        {% include analytics.html %}
+    {% endif %}
     <title>
         LC3Tutor Editor and Emulator
     </title>
 
     <link rel="icon" type="image/png" sizes="16x16" href="assets/lc3tutor/icon/favicon-16x16.png">
     <link rel="stylesheet" type="text/css" href="assets/lc3tutor/css/lc3editor.css">
-{% if site.tracker -%}
-    <!-- trackers -->
-    {%- if site.tracker.application_insights -%}
-        <!-- application insights -->
-        {%- include application-insights.html -%}
-    {%- endif -%}
-{%- endif %}
 </head>
 
 <body>
