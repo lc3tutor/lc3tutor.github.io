@@ -1,5 +1,5 @@
 ---
-title: LC3 Editor How To
+title: Using LC3 Editor
 description: The basics of using the LC3Tutor LC3 Editor.
 author: lc3tutor
 date: 2025-09-06
@@ -9,7 +9,7 @@ slug: editor-how-to
 permalink: /editor-how-to
 ---
 
-This section covers the basics of using the LC3Tutor LC3Editor.
+This section covers the basics of using the [LC3Tutor LC3Editor](/lc3tee).
 
 ## LC3 Syntax
 

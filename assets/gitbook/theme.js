@@ -2395,12 +2395,11 @@
                         n = i.handler,
                         o = i.selector),
                         o && de.find.matchesSelector(Ye, o),
+                        //console.log(Ye),
+                        //console.log(o),
                         n.guid || (n.guid = de.guid++),
                         (u = m.events) || (u = m.events = {}),
-                        (a = m.handle) || (a = m.handle = function(t) {
-                            return "undefined" != typeof de && de.event.triggered !== t.type ? de.event.dispatch.apply(e, arguments) : void 0
-                        }
-                        ),
+                        (a = m.handle),// || (a = m.handle = function(t) { return "undefined" != typeof de && de.event.triggered !== t.type ? de.event.dispatch.apply(e, arguments) : void 0 }),
                         t = (t || "").match(qe) || [""],
                         l = t.length; l--; )
                             s = Ze.exec(t[l]) || [],

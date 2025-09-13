@@ -2467,8 +2467,7 @@
                                 a.rnamespace && !a.rnamespace.test(i.namespace) || (a.handleObj = i,
                                 a.data = i.data,
                                 r = ((de.event.special[i.origType] || {}).handle || i.handler).apply(o.elem, u),
-                                void 0 !== r && (a.result = r) === !1 && (a.preventDefault(),
-                                a.stopPropagation()));
+                                void 0 !== r && (a.result = r) === !1 && (a.preventDefault(), a.stopPropagation()));
                         return l.postDispatch && l.postDispatch.call(this, a),
                         a.result
                     }
