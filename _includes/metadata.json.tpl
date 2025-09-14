@@ -40,7 +40,7 @@
             },
         },
         "theme": "default",
-        "author": "Tao He",
+        "author": "LC3Tutor",
         "pdf": {
             "pageNumbers": true,
             "fontSize": 12,
