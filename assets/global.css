@@ -1,5 +1,10 @@
 /* Used for all global variables. */
 :root {
+    --color-bg   : white;
+    --color-bg-2 : #fafafa;
+    --color-bg-3 : #ccc;
+    --color-text : #333;
+
     --text-color-light   : #333;
     --text-color-dark    : #bdcadb;
     --text-color         : var(--text-color-light);

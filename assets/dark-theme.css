@@ -1,0 +1,7 @@
+/* Fall back to :root if dark is not specified. */
+[data-theme="dark"] {
+  --color-bg   : #1c1f2b;
+  --color-bg-2 : #2d3143;
+  --color-bg-3 : #252737;
+  --color-text : #bdcadb;
+}

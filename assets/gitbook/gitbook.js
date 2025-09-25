@@ -5130,7 +5130,7 @@
     }],
     12: [function(e, t, n) {
         function r(e) {
-            console.log("page has changed", e),
+            //console.log("page has changed", e),
             o(e),
             l || (l = !0,
             c.trigger("start", e.config.pluginsConfig)),
@@ -5138,7 +5138,7 @@
             // Required to keep slider after page change.
             document.querySelector('.theme-switch input[type="checkbox"]').addEventListener('change', changeLC3ColorTheme_p, false);
             let themeChecked = false;
-            console.log(localStorage.getItem(':fontState'));
+            //console.log(localStorage.getItem(':fontState'));
             let tempFontState = JSON.parse(localStorage.getItem(':fontState'));
             if(tempFontState.theme !== 0) themeChecked = true;
             document.querySelector('.theme-switch input[type="checkbox"]').checked = themeChecked;

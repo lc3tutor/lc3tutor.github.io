@@ -1,3 +1,12 @@
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: underline;
+}
 
 .tab {
     display: none;
@@ -19,7 +28,7 @@
     margin-right: 5px;
 }
 .tab-button.active {
-    background-color: #ccc;
+    background-color: var(--color-bg-3);
 }
 
 #asmeditor {
@@ -27,6 +36,7 @@
 }
 .tab-content {
     border: 1px solid #dee2e6;
+    background-color: var(--color-bg-2);
     padding: 10px;
     overflow-x: auto;
     overflow-y: auto;

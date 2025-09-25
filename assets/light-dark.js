@@ -21,4 +21,3 @@ if(stateStr === null){
 }
 const state = JSON.parse(stateStr);
 toggleLightDark(state.theme);
-
