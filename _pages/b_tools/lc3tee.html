@@ -21,10 +21,11 @@ permalink: /lc3tee
     <title>
         LC3Tutor Editor and Emulator
     </title>
+    <script src="coi-serviceworker.min.js"></script>
 
     <link rel="icon" type="image/png" sizes="16x16" href="assets/lc3tutor/icon/favicon-16x16.png">
     <script src="assets/light-dark-2.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/lc3tutor/css/lc3editor.css">
+    <link rel="stylesheet" type="text/css" href="assets/lc3tutor/css/lc3tee.min.css">
     <link rel="stylesheet" type="text/css" href="assets/light-dark.css">
     <link rel="stylesheet" type="text/css" href="assets/global.css">
     <link rel="stylesheet" type="text/css" href="assets/dark-theme.css">
@@ -91,12 +92,129 @@ permalink: /lc3tee
     </div>
     <!-- End LC3 Editor -->
 
+    <h2 style="text-align: center;">LC3 Emulator</h2>
+    <div class="container-fluid text-center">
+        <div class="container">
+            <div class="lc3controls">
+                <div class="lc3buttons">
+                    <button id="lc3EmuLoadBtn">Load</button>
+                    <button id="lc3EmuResetBtn">Reset</button>
+                    <button id="lc3EmuScriptBtn">Script<span class="lc3EmuScriptTooltip">Execute the commands in the Script Input textbox.</span></button>
+                    <button id="lc3EmuNextBtn">Next</button>
+                    <button id="lc3EmuStepBtn">Step</button>
+                    <button id="lc3EmuContinueBtn">Continue</button>
+                    <button id="lc3EmuStopBtn">Stop</button>
+                </div>
+                <div class="lc3commandinput">
+                    <p>Command Input:</p>
+                    <input id="cmd_in" name="cmd_in" spellcheck="false"></input>
+                </div>
+                <div class="lc3commandoutput">
+                    <p>Command Output:</p>
+                    <textarea readonly id="cmd_out" name="cmd_out" class="scrollabletextbox" rows="5" spellcheck="false"></textarea>
+                </div>
+                <div class="lc3scriptinput">
+                    <p>Script Input:</p>
+                    <textarea id="script_in" name="script_in" class="scrollabletextbox" rows="5" spellcheck="false">
+                        Once we get command in and out working, it want be difficult to extend it to scripting.
+                    </textarea>
+                </div>
+                <div class="lc3keystrokeinput">
+                    <p>Keystroke Input:</p>
+                    <textarea id="keystroke_in" name="keystroke_in" class="scrollabletextbox" rows="5" spellcheck="false">
+                        Need to determine how to handle key input. Will probably need to limit characters allowed.
+                    </textarea>
+                </div>
+            </div>
+            <div class="lc3info">
+                <div class="lc3infotop">
+                    <div class="lc3infotopleft">
+                        <div>
+                            <fieldset class="gui_fieldset border border-1 rounded px-4 pb-2">
+                                <legend align="left" class="float-none w-auto mx-2 px-1">Registers</legend>
+                                <div class="row">
+                                    <table id="register-table">
+                                    <tr><td class="registerName">R0</td><td class="registerValue">x0000</td><td class="registerName">PC</td><td class="registerValue">x0000</td></tr>
+                                    <tr><td class="registerName">R1</td><td class="registerValue">x0000</td><td class="registerName">IR</td><td class="registerValue">x0000</td></tr>
+                                    <tr><td class="registerName">R2</td><td class="registerValue">x0000</td><td class="registerName">MCR</td><td class="registerValue">x0000</td></tr>
+                                    <tr><td class="registerName">R3</td><td class="registerValue">x0000</td><td class="registerName">PSR</td><td class="registerValue">x0000</td></tr>
+                                    <tr><td class="registerName">R4</td><td class="registerValue">x0000</td><td class="registerName">MAR</td><td class="registerValue">x0000</td></tr>
+                                    <tr><td class="registerName">R5</td><td class="registerValue">x0000</td><td class="registerName">MDR</td><td class="registerValue">b000</td></tr>
+                                    <tr><td class="registerName">R6</td><td class="registerValue">x0000</td><td class="registerName">BEN</td><td class="registerValue">b0</td></tr>
+                                    <tr><td class="registerName">R7</td><td class="registerValue">x0000</td><td class="registerName">CC</td><td class="registerValue">b000</td></tr>
+                                    </table>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset class="gui_fieldset border border-1 rounded px-4 pb-2">
+                                <legend align="left" class="float-none w-auto mx-2 px-1">Graphics Display</legend>	
+                                <canvas     id="graphicDisplay"
+                                            width="256"
+                                            height="248"
+                                            style="background-color: black">
+                                </canvas>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="lc3infotopright">
+                        <fieldset id="memory_fieldset" class="mem_fieldset border border-1 rounded px-4 pb-2">
+                            <legend align="left" class="float-none w-auto mx-2 px-1">Memory</legend>
+                            <div id="memory-container">
+                                <div id="memory-scroll" class="scroll-container">
+                                    <table id="memory-table">
+                                        <thead>
+                                            <tr> <th>Address</th> <th>Instruction</th> </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        <tr> <td></td> <td></td> </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="lc3infobottom">
+                    <fieldset class="gui_fieldset border border-1 rounded px-2 pb-2">
+                        <legend align="left" class="float-none w-auto mx-2 px-1">Console</legend>
+                        <textarea readonly id="console" name="console" class="scrollabletextbox" rows="5" spellcheck="false"></textarea>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- External Javascript Dependencies -->
     <!-- This Javascript must be included first. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <!-- LC3 Emulator & Editor Javascript -->
-    <script src="assets/lc3tutor/js/lc3editor.min.js"></script>
+    <script src="assets/lc3tutor/js/lc3tee.min.js"></script>
+    <script src="assets/lc3tutor/js/machine_worker.js"></script>
 </body>
 </html>

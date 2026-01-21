@@ -45,11 +45,13 @@ function InitSiteTheme(theme) {
 function ThemeToggleCallback(event) {
     const themeSelected = event.target.checked ? DARK : LIGHT;
     UpdateSiteTheme(themeSelected);
-    lc3editor.SetViewTheme(themeSelected);
+    //lc3editor.SetViewTheme(themeSelected);
+    lc3emulator.SetViewTheme(themeSelected);
 }
 
 window.onload = () => {
-  lc3editor.SetViewTheme(GetSavedTheme());
+  //lc3editor.SetViewTheme(GetSavedTheme());
+  lc3emulator.SetViewTheme(GetSavedTheme());
 };
 
 document.addEventListener("DOMContentLoaded", () => {

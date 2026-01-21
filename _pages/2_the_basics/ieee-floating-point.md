@@ -7,6 +7,7 @@ category: pages
 layout: post
 slug: ieee-floating-point
 permalink: /ieee-floating-point
+lc3ieee: true
 ---
 
 In this section we will discuss the 32-bit IEEE floating point binary representation from the IEEE 754 standard.

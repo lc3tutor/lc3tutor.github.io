@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+ROOT_DIR="$SCRIPT_DIR/.."
+
+echo -e "The script's root directory is: $ROOT_DIR\n"
+
+printsize () {
+    echo -e "  $1: $(du -h "$2" | cut -f1)"
+}
+
+printsizes () {
+    echo -e "\nFile Sizes:"
+    printsize "lc3editor.min.js" "$SCRIPT_DIR/assets/lc3tutor/js/lc3editor.min.js"
+    printsize "lc3tee.min.js" "$SCRIPT_DIR/assets/lc3tutor/js/lc3tee.min.js"
+    printsize "lc3tee.min.css" "$SCRIPT_DIR/assets/lc3tutor/css/lc3tee.min.css"
+    printsize "machine_worker.js" "$SCRIPT_DIR/assets/lc3tutor/js/machine_worker.js"
+    echo ""
+}
+
+cm () {
+    echo "Building code mirror library..."
+    cd "$ROOT_DIR/lc3cm"
+    npm run build
+    printsizes
+}
+
+parser() {
+    echo "Building LC3 Parser library..."
+    cd "$ROOT_DIR/lc3parse"
+    npm run prepare
+}
+
+tee() {
+    echo "Building LC3 Tutor Emulator and Editor library..."
+    cd "$ROOT_DIR/lc3tee"
+    npm run build
+}
+
+copyfiles() {
+    cp "$ROOT_DIR/lc3tee/dist/lc3tee.min.js" "$SCRIPT_DIR/assets/lc3tutor/js/lc3tee.min.js"
+    cp "$ROOT_DIR/lc3tee/dist/lc3tee.min.css" "$SCRIPT_DIR/assets/lc3tutor/css/lc3tee.min.css"
+    cp "$ROOT_DIR/lc3tee/dist/machine_worker.js" "$SCRIPT_DIR/assets/lc3tutor/js/machine_worker.js"
+    printsizes
+}
+
+# Access the first input argument using $1
+case "$1" in
+    "cm")
+        cm
+        ;;
+    "parser")
+        parser
+        ;;
+    "tee")
+        tee
+        ;;
+    "copy")
+        copyfiles
+        ;;
+    "all")
+        buildcm
+        parser
+        tee
+        copyfiles
+        ;;
+    "server")
+        bundle exec jekyll serve
+        ;;
+    *)
+        echo "Usage: $0 {cm|parser|tee|copy|all|server}"
+        exit 1
+        ;;
+esac
