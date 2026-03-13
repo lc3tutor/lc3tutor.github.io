@@ -1,7 +1,7 @@
 ---
 title: Privacy
 author: lc3tutor
-date: 2024-03-27
+date: 2026-01-20
 category: pages
 layout: post
 ---

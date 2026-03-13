@@ -1,0 +1,651 @@
+/* ============================================================
+   lc3tee2.css — layout for the lc3tee2 experimental page
+   Three regions:
+     lc3tee-sidebar  — collapsible, resizable left panel
+     lc3tee-tabs     — top header bar holding tab buttons
+     lc3tee-work     — main content area, driven by active tab
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Root / reset
+   ---------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------
+   App shell
+   The sidebar width is driven by --lc3tee-sidebar-w so JS
+   can update it with a single CSS variable write.
+   ---------------------------------------------------------- */
+.lc3tee-app {
+    --lc3tee-sidebar-w: 260px;
+    --lc3tee-tabs-h: 46px;
+    --lc3tee-sidebar-transition: width 220ms ease, margin-left 220ms ease;
+
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------
+   Sidebar
+   ---------------------------------------------------------- */
+.lc3tee-sidebar {
+    position: relative;           /* for the resizer pseudo-element */
+    flex-shrink: 0;
+    width: var(--lc3tee-sidebar-w);
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+    background: var(--bg-nav-color, #f7f8fa);
+    transition: var(--lc3tee-sidebar-transition);
+}
+
+/* When collapsed the sidebar width goes to 0 */
+.lc3tee-app.sidebar-collapsed .lc3tee-sidebar {
+    width: 0;
+    border-right-color: transparent;
+}
+
+/* Drag handle — sits on the right edge of the sidebar */
+.lc3tee-sidebar-resizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 10;
+    background: transparent;
+}
+
+.lc3tee-sidebar-resizer:hover,
+.lc3tee-app.sidebar-resizing .lc3tee-sidebar-resizer {
+    background: rgba(115, 147, 179, 0.5);
+}
+
+/* Hide the resizer when collapsed so it doesn't peek out */
+.lc3tee-app.sidebar-collapsed .lc3tee-sidebar-resizer {
+    display: none;
+}
+
+/* ----------------------------------------------------------
+   Sidebar inner content
+   ---------------------------------------------------------- */
+
+/* Fills the sidebar minus the 5 px resize handle on the right */
+.lc3tee-sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 18px 10px 12px;  /* right padding clears the resizer */
+}
+
+.lc3tee-sidebar-footer {
+    margin-top: auto;
+    padding-top: 12px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.lc3tee-sidebar-footer:hover {
+    opacity: 1;
+}
+
+.lc3tee-clear-btn {
+    width: 100%;
+    min-height: 28px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    background: var(--bg-body-color, #fff);
+    color: inherit;
+    white-space: normal;
+    text-align: center;
+}
+
+.lc3tee-clear-btn:hover {
+    background: rgba(200, 80, 80, 0.12);
+    border-color: rgba(200, 80, 80, 0.4);
+}
+
+.lc3tee-sidebar-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.lc3tee-sidebar-footer a:hover {
+    text-decoration: underline;
+}
+
+/* A labelled section inside the sidebar */
+.lc3tee-sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.lc3tee-sidebar-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+/* Row of action buttons */
+.lc3tee-sidebar-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.lc3tee-sidebar-btns button {
+    flex: 1 1 auto;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    background: var(--bg-body-color, #fff);
+    color: inherit;
+    white-space: nowrap;
+}
+
+.lc3tee-sidebar-btns button:hover {
+    background: rgba(115, 147, 179, 0.15);
+}
+
+.lc3tee-simulate-btn {
+    flex: 1 1 100%;
+    height: 42px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    background: rgba(115, 147, 179, 0.15) !important;
+    border-color: rgba(115, 147, 179, 0.45) !important;
+}
+
+.lc3tee-simulate-btn:hover {
+    background: rgba(115, 147, 179, 0.3) !important;
+}
+
+/* File listbox */
+.lc3tee-file-list {
+    width: 100%;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    background: var(--bg-body-color, #fff);
+    color: inherit;
+    padding: 2px;
+    height: 150px;
+    resize: none;
+}
+
+/* ----------------------------------------------------------
+   Body (tabs + work)
+   ---------------------------------------------------------- */
+.lc3tee-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ----------------------------------------------------------
+   Tabs header
+   ---------------------------------------------------------- */
+.lc3tee-tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    height: var(--lc3tee-tabs-h);
+    padding: 0 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    background: var(--bg-header-color, #fff);
+    gap: 4px;
+    overflow: hidden;
+}
+
+.lc3tee-tabs-scroll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
+.lc3tee-tabs-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.lc3tee-tabs-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.lc3tee-tabs-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Sidebar toggle button (hamburger) */
+.lc3tee-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    min-width: 32px;
+    padding: 0 8px;
+    margin-right: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    color: inherit;
+    border-radius: 4px;
+}
+
+.lc3tee-sidebar-toggle:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* Generic tab button style */
+.lc3tee-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    height: 32px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    color: inherit;
+    transition: background 150ms ease;
+}
+
+.lc3tee-tab-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.lc3tee-tab-btn.active {
+    border-color: rgba(0, 0, 0, 0.10);
+    border-bottom-color: var(--bg-body-color, #fff);
+    background: var(--bg-body-color, #fff);
+    font-weight: 600;
+}
+
+.lc3tee-tab-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1;
+    opacity: 0.5;
+    vertical-align: middle;
+}
+
+.lc3tee-tab-close:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+/* ----------------------------------------------------------
+   Close-tab confirmation dialog
+   ---------------------------------------------------------- */
+.lc3tee-dialog-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.lc3tee-dialog-backdrop[hidden] {
+    display: none;
+}
+
+.lc3tee-dialog {
+    background: var(--bg-body-color, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    padding: 20px 24px 16px;
+    min-width: 300px;
+    max-width: 420px;
+}
+
+.lc3tee-dialog-msg {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.lc3tee-dialog-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.lc3tee-dialog-btns button {
+    height: 30px;
+    padding: 0 14px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    background: var(--bg-body-color, #fff);
+    color: inherit;
+}
+
+.lc3tee-dialog-btns button:hover {
+    background: rgba(115, 147, 179, 0.15);
+}
+
+.lc3tee-dialog-btns button:first-child {
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------------
+   Work area
+   ---------------------------------------------------------- */
+.lc3tee-work {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: auto;
+    background: var(--bg-body-color, #fff);
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/* Generic work panel — hidden until active */
+.lc3tee-panel {
+    display: none;
+    width: 100%;
+}
+
+.lc3tee-panel.active {
+    display: block;
+}
+
+/* Editor textarea inside a panel */
+.lc3tee-editor {
+    display: block;
+    width: 100%;
+    height: 100px;
+    max-height: 100px;
+    resize: none;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 8px;
+    background: var(--bg-body-color, #fff);
+    color: inherit;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.lc3tee-editor:focus {
+    border-color: rgba(115, 147, 179, 0.7);
+    box-shadow: 0 0 0 2px rgba(115, 147, 179, 0.2);
+}
+
+.lc3tee-editor-readonly {
+    opacity: 0.65;
+    cursor: default;
+    background: var(--bg-nav-color, #f7f8fa);
+}
+
+.lc3tee-editor-readonly:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+}
+
+/* Labeled section wrapping one editor textarea */
+.lc3tee-editor-section {
+    margin-bottom: 14px;
+}
+
+.lc3tee-editor-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+/* ----------------------------------------------------------
+   Assembly status table
+   ---------------------------------------------------------- */
+.lc3tee-status-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+.lc3tee-status-table th {
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    padding: 2px 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.lc3tee-status-table td {
+    padding: 3px 4px;
+    vertical-align: middle;
+}
+
+.lc3tee-status-name {
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0;       /* forces ellipsis to work inside table */
+    width: 60%;
+}
+
+.lc3tee-status-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.lc3tee-status-assembled {
+    background: rgba(40, 167, 69, 0.15);
+    color: #1a7a33;
+    border: 1px solid rgba(40, 167, 69, 0.35);
+}
+
+.lc3tee-status-error {
+    background: rgba(220, 53, 69, 0.12);
+    color: #a0212e;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.lc3tee-status-not-assembled {
+    background: rgba(0, 0, 0, 0.05);
+    color: #888;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* ----------------------------------------------------------
+   Toast notification
+   ---------------------------------------------------------- */
+.lc3tee-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: rgba(30, 30, 30, 0.88);
+    color: #fff;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease, transform 180ms ease;
+    white-space: nowrap;
+    z-index: 2000;
+}
+
+.lc3tee-toast.lc3tee-toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ----------------------------------------------------------
+   Simulator overlay
+   Sits over lc3tee-body (the editor region), not the sidebar.
+   ---------------------------------------------------------- */
+.lc3tee-sim-overlay {
+    position: absolute;
+    inset: 20px;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-body-color, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    z-index: 500;
+    overflow: hidden;
+}
+
+.lc3tee-sim-overlay[hidden] {
+    display: none;
+}
+
+.lc3tee-sim-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    height: var(--lc3tee-tabs-h);
+    padding: 0 14px 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    background: var(--bg-header-color, #fff);
+}
+
+.lc3tee-sim-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.lc3tee-sim-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: inherit;
+    opacity: 0.6;
+}
+
+.lc3tee-sim-close:hover {
+    background: rgba(0, 0, 0, 0.07);
+    opacity: 1;
+}
+
+.lc3tee-sim-body {
+    flex: 1 1 0;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.lc3tee-sim-file-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lc3tee-sim-file-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+}
+
+.lc3tee-sim-lst {
+    width: 100%;
+    height: 180px;
+    resize: vertical;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background: var(--bg-nav-color, #f7f8fa);
+    color: inherit;
+    box-sizing: border-box;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    cursor: default;
+    outline: none;
+}

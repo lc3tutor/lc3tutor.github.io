@@ -1,0 +1,119 @@
+---
+title: LC3 Editor
+description: LC3 Editor.
+author: lc3tutor
+date: 2025-09-04
+category: pages
+layout: raw
+slug: lc3tee2
+permalink: /lc3tee2
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+        {% include analytics.html %}
+    {% endif %}
+    <title>LC3Tutor Editor and Emulator</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/lc3tutor/icon/favicon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="assets/lc3tutor/css/lc3tee2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+</head>
+
+<body>
+
+    <div class="lc3tee-app" id="lc3tee-app">
+
+        <!-- Sidebar -->
+        <div class="lc3tee-sidebar" id="lc3tee-sidebar">
+
+            <!-- Sidebar inner content (scrollable, stops before the resize handle) -->
+            <div class="lc3tee-sidebar-content">
+
+                <!-- File list section -->
+                <div class="lc3tee-sidebar-section">
+                    <div class="lc3tee-sidebar-section-label">Files</div>
+                    <div class="lc3tee-sidebar-btns">
+                        <button id="lc3tee-add-file-btn">+ Add File</button>
+                        <button id="lc3tee-remove-file-btn">&minus; Remove File</button>
+                        <button id="lc3tee-open-tab-btn">&#x2197; Open Tab</button>
+                        <button id="lc3tee-close-tab-btn">&#x2715; Close Tab</button>
+                        <button id="lc3tee-save-btn">&#x1F4BE; Save</button>
+                        <button id="lc3tee-save-all-btn">&#x1F4BE; Save All</button>
+                        <button id="lc3tee-import-file-btn">&#x1F4C2; Import File</button>
+                        <button id="lc3tee-export-all-btn">&#x1F4E4; Export All</button>
+                    </div>
+                    <input type="file" id="lc3tee-import-input" accept=".asm" hidden>
+                    <select id="lc3tee-file-list" class="lc3tee-file-list" size="8"></select>
+                </div>
+
+                <!-- Assemble section -->
+                <div class="lc3tee-sidebar-section">
+                    <div class="lc3tee-sidebar-section-label">Build &amp; Run</div>
+                    <div class="lc3tee-sidebar-btns">
+                        <button id="lc3tee-simulate-btn" class="lc3tee-simulate-btn">&#x25B6; Simulate</button>
+                        <button id="lc3tee-assemble-btn">&#x2699; Assemble</button>
+                    </div>
+                    <div id="lc3tee-status-table"></div>
+                </div>
+
+                <!-- Sidebar footer -->
+                <div class="lc3tee-sidebar-footer">
+                    <button id="lc3tee-clear-workspace-btn" class="lc3tee-clear-btn">&#x1F5D1; Clear Workspace</button>
+                    <span><a href="https://lc3tutor.com" target="_blank" rel="noopener">lc3tutor.com</a> | v0.0.1</span>
+                </div>
+
+            </div>
+
+            <div class="lc3tee-sidebar-resizer" id="lc3tee-sidebar-resizer"></div>
+        </div>
+
+        <!-- Simulator overlay (covers the body/editor area) -->
+        <div class="lc3tee-sim-overlay" id="lc3tee-sim-overlay" hidden>
+            <div class="lc3tee-sim-header">
+                <span class="lc3tee-sim-title">Simulator</span>
+                <button class="lc3tee-sim-close" id="lc3tee-sim-close" aria-label="Close simulator">&#x2715;</button>
+            </div>
+            <div class="lc3tee-sim-body" id="lc3tee-sim-body">
+                <!-- populated by JS -->
+            </div>
+        </div>
+
+        <!-- Main body: tabs header + work area -->
+        <div class="lc3tee-body" id="lc3tee-body">
+
+            <!-- Tab header -->
+            <div class="lc3tee-tabs" id="lc3tee-tabs">
+                <button class="lc3tee-sidebar-toggle" id="lc3tee-sidebar-toggle" aria-label="Toggle sidebar">&#9776;</button>
+                <div class="lc3tee-tabs-scroll" id="lc3tee-tabs-scroll">
+                    <!-- tab buttons go here -->
+                </div>
+            </div>
+
+            <!-- Work area — content changes based on active tab -->
+            <div class="lc3tee-work" id="lc3tee-work">
+                <!-- tab panels go here -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Close-tab confirmation dialog -->
+    <div class="lc3tee-dialog-backdrop" id="lc3tee-close-dialog" hidden aria-modal="true" role="dialog">
+        <div class="lc3tee-dialog">
+            <p class="lc3tee-dialog-msg" id="lc3tee-close-dialog-msg"></p>
+            <div class="lc3tee-dialog-btns">
+                <button id="lc3tee-dialog-save">Save &amp; Close</button>
+                <button id="lc3tee-dialog-discard">Don&#x2019;t Save</button>
+                <button id="lc3tee-dialog-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/lc3tutor/js/lc3tee2.js"></script>
+</body>
+</html>

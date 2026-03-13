@@ -6,25 +6,21 @@
 }
 
 .book-body .book-header {
-    position: fixed;
-    width: 100%;
-}
-
-.book.with-summary .book-body .book-header {
-    position: fixed;
-    width: calc(100% - 300px);
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .book-body .body-inner {
     /* position: absolute; */
-    margin-top: 50px;
+    top: 50px;
     min-height: calc(100% - 50px);
 }
 
 @media (max-width: 1240px) {
     .book-body .body-inner {
         position: absolute;
-        margin-top: 50px;
+        top: 50px;
         min-height: calc(100% - 50px)
     }
 }
@@ -43,7 +39,7 @@
         width: calc(50% - 3px);
     }
 
-    .book.with-summary .book-body .book-header {
+    .book-body .book-header {
         overflow-x: hidden;
         overflow-y: hidden;
     }

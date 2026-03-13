@@ -17,7 +17,7 @@ h1.tester {
 }
 
 a.page-link {
-  color: #bdcadb !important;
+  color: var(--text-color) !important;
 }
 
 .ctnr_btn_start {
@@ -58,7 +58,7 @@ a.page-link {
 .accordion {
     background-color: #eee;
     background: transparent;
-    color: #c1c6d7;
+    color: var(--text-color);
     cursor: pointer;
     padding: 15px;
     width: 100%;
@@ -90,7 +90,9 @@ a.page-link {
 .accordion-page {
   padding: 14px 25px;
   text-decoration: none;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .navi-link {

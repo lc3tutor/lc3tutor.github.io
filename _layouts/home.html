@@ -17,15 +17,19 @@
 
         <div class="book-body">
             <div class="book-header" role="navigation">
+                <!-- Hamburger: toggles .with-summary on .book (same as gitbook sidebar.toggle) -->
+                <a class="btn pull-left" aria-label="Toggle sidebar" href="#" onclick="event.preventDefault(); gitbook.sidebar.toggle();">
+                    <i class="fa fa-align-justify"></i>
+                </a>
                 <!-- Title -->
                 <h1>
-                    <i class="fa fa-circle-o-notch fa-spin"></i>
                     {% if page.title %}
-                        <a href="." >{{ page.title | escape }}</a>
+                        <a href=".">{{ page.title | escape }}</a>
                     {% else %}
-                        <a href="." >{{ site.title | escape }}</a>
+                        <a href=".">{{ site.title | escape }}</a>
                     {% endif %}
                 </h1>
+                <!-- Theme toggle replaces the sharing button on the right -->
                 <div class="theme-switch-container">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />

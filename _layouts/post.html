@@ -9,16 +9,16 @@
 
         <div class="book-body">
             <div class="book-header" role="navigation">
+                <!-- Hamburger: toggles .with-summary on .book (same as gitbook sidebar.toggle) -->
+                <a class="btn pull-left" aria-label="Toggle sidebar" href="#" onclick="event.preventDefault(); gitbook.sidebar.toggle();">
+                    <i class="fa fa-align-justify"></i>
+                </a>
                 <!-- Title -->
                 <h1>
-                    <i class="fa fa-circle-o-notch fa-spin"></i>
                     {% assign subsection_object = site.data.navigation.subsections[page.title] %}
-                    {% if page.title %}
-                        <a href="." >{{ subsection_object.title | escape }}</a>
-                    {% else %}
-                        <a href="." >{{ subsection_object.title | escape }}</a>
-                    {% endif %}
+                    <a href=".">{{ subsection_object.title | escape }}</a>
                 </h1>
+                <!-- Theme toggle replaces the sharing button on the right -->
                 <div class="theme-switch-container">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />

@@ -3,3 +3,63 @@
  * Its purpose is for users of the theme to be able to add css rules from a blank file
  *   these get simply added to the ones already active in the layout.
  */
+
+/* Suppress buttons dynamically injected into .book-header by theme.js / sharing / fontsettings.
+ * The fontsettings button is wrapped in a <div class="js-toolbar-action">, the others in <a>.
+ * Targeting the class without element type catches both. */
+.book-header .js-toolbar-action {
+    display: none !important;
+}
+
+/* Hamburger icon colour: style.css hardcodes #ccc which is invisible in light mode. */
+.book-header .btn {
+    color: var(--text-color) !important;
+}
+.book-header .btn:hover {
+    color: var(--text-color) !important;
+    opacity: 0.7;
+}
+
+/* Title colour: style.css hardcodes #7e888b on .book-header; h1 a inherits it. */
+.book-header,
+.book-header h1 a,
+.book-header h1 a:hover {
+    color: var(--text-color) !important;
+}
+
+/* Sidebar text: style.css hardcodes #364149 on .book-summary and its nav links/spans. */
+.book-summary,
+.book-summary ul.summary li a,
+.book-summary ul.summary li span,
+.book-summary ul.summary li.done > a,
+.book-summary #book-search-input input {
+    color: var(--text-color) !important;
+}
+
+/* Sidebar hover: website.css provides a high-specificity hover rule for color-theme-2 (dark)
+ * but nothing equivalent for light mode. Mirror it here for all themes. */
+.book-summary ul.summary li a:hover {
+    background: var(--accordian-active-color) !important;
+}
+
+/* Back-to-top arrow: pin to bottom-right corner instead of the content-centred calc(). */
+.back-to-top {
+    right: 15px !important;
+    bottom: 15px !important;
+}
+
+
+
+/* Pin the theme slider to the right edge of the header using absolute positioning so it never
+ * gets pushed below the header when the book-body is narrow (float: right would cause that). */
+.book-header .theme-switch-container {
+    position: absolute;
+    right: 8px;
+    top: 0;
+    height: 50px;
+    width: auto;
+    padding-top: 0;
+    float: none;
+    display: flex;
+    align-items: center;
+}
